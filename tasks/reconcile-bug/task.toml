@@ -1,0 +1,33 @@
+schema_version = "1.4"
+
+[task]
+name = "harbor/reconcile-bug"
+version = "1.0.0"
+description = "Repair a Python CSV transaction reconciliation CLI that reports wrong totals and counts."
+authors = []
+keywords = [ "debugging", "python", "csv", "timezones",]
+
+[metadata]
+author_name = "Nirmit Srivastava"
+author_email = "nirmit77srivastava@gmail.com"
+difficulty = "medium"
+category = "debugging"
+tags = [ "python", "csv", "datetime", "bug-fix",]
+
+[verifier]
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 120.0
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 1
+memory_mb = 2048
+storage_mb = 10240
+gpus = 0
+mcp_servers = []
+
+[verifier.env]
+
+[solution.env]
