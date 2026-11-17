@@ -1,9 +1,8 @@
 # Harbor RL Submission — Nirmit Srivastava (@nirmit7717)
 
-## 1. Loom Walkthrough Video
+## 1. Walkthrough Video Link
 
-- **Video URL:** **[TODO: add Loom URL before submission]**
-- The Loom link's sharing must be set to "Anyone with the link can view".
+- **Video URL:** **https://youtu.be/qaUs1oFaov8**
 
 ## 2. Task & Calibration Summary
 
