@@ -51,10 +51,10 @@ def reconcile(csv_path):
 
             # Keep the most recent record for each transaction ID.
             previous = latest.get(tx_id)
-            if previous is None or timestamp > previous["timestamp"]:
+            if previous is None or timestamp > previous["timestamp"]:  #Incorrect timestamp comparison (Hard)
                 latest[tx_id] = {"timestamp": timestamp, "amount": amount, "status": status}
 
-    valid = [tx for tx in latest.values() if tx["status"] in ("VALID", "PENDING")]
+    valid = [tx for tx in latest.values() if tx["status"] in ("VALID", "PENDING")] #Incorrect status filtering (Medium)
     failed = [tx for tx in latest.values() if tx["status"] == "FAILED"]
     with localcontext(prec=MAX_PREC):
         total = sum((tx["amount"] for tx in valid), Decimal(0))
@@ -66,7 +66,7 @@ def reconcile(csv_path):
 
 def main():
     if len(sys.argv) != 3:
-        print("Usage: python reconcile.py <input.csv>", file=sys.stderr)
+        print("Usage: python reconcile.py <input.csv>", file=sys.stderr) #CLI argument handling (Easy)
         sys.exit(1)
     csv_path = Path(sys.argv[1])
     if not csv_path.is_file():
