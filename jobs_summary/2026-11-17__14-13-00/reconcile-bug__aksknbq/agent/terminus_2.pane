@@ -1,0 +1,587 @@
+[?2004hroot@f84aedce5e97:/app# asciinema rec --stdin /logs/agent/recording.cast
+[?2004l[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
+[0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
+[?2004hroot@f84aedce5e97:/app# clear
+[?2004l[H[J[3J[?2004hroot@f84aedce5e97:/app# ls -la
+[?2004ltotal 12
+drwxr-xr-x 1 root root 4096 Nov 17 13:10 .
+drwxr-xr-x 1 root root 4096 Nov 17 14:21 ..
+-rwxrwxrwx 1 root root 3274 Nov 17 13:10 reconcile.py
+[?2004hroot@f84aedce5e97:/app# cat reconcile.py
+[?2004l#!/usr/bin/env python3
+"""Summarise a transaction CSV (tx_id,timestamp,amount,status) as JSON."""
+
+import csv
+import sys
+from datetime import datetime
+from decimal import MAX_PREC, ROUND_HALF_UP, Decimal, DecimalException, localcontext
+from pathlib import Path
+
+REQUIRED_COLUMNS = ("tx_id", "timestamp", "amount", "status")
+KNOWN_STATUSES = {"VALID", "FAILED", "PENDING"}
+
+
+def parse_timestamp(value):
+    parsed = datetime.fromisoformat(value)
+    if parsed.tzinfo is None:
+        raise ValueError(f"Timestamp must include a UTC offset: {value!r}")
+    return parsed
+
+
+def parse_amount(value):
+    try:
+        amount = Decimal(value)
+    except DecimalException:
+        raise ValueError(f"Invalid amount: {value!r}") from None
+    if not amount.is_finite():
+        raise ValueError(f"Amount must be finite: {value!r}")
+    return amount
+
+
+def reconcile(csv_path):
+    latest = {}
+    with open(csv_path, newline="", encoding="utf-8-sig") as handle:
+        reader = csv.DictReader(handle)
+        if not set(REQUIRED_COLUMNS).issubset(reader.fieldnames or []):
+            raise ValueError("CSV is missing required columns")
+
+        for row in reader:
+            if None in row or None in row.values():
+                raise ValueError(f"Malformed row on line {reader.line_num}")
+            tx_id = row["tx_id"].strip()
+            timestamp = row["timestamp"].strip()
+            parse_timestamp(timestamp)
+            amount = parse_amount(row["amount"].strip())
+            status = row["status"].strip().upper()
+
+            if not tx_id:
+                raise ValueError(f"Empty transaction ID on line {reader.line_num}")
+            if status not in KNOWN_STATUSES:
+                raise ValueError(f"Unknown status on line {reader.line_num}: {status!r}")
+
+            # Keep the most recent record for each transaction ID.
+            previous = latest.get(tx_id)
+            if previous is None or timestamp > previous["timestamp"]:
+                latest[tx_id] = {"timestamp": timestamp, "amount": amount, "status": status}
+
+    valid = [tx for tx in latest.values() if tx["status"] in ("VALID", "PENDING")]
+    failed = [tx for tx in latest.values() if tx["status"] == "FAILED"]
+    with localcontext(prec=MAX_PREC):
+        total = sum((tx["amount"] for tx in valid), Decimal(0))
+        total = total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    if total.is_zero():
+        total = total.copy_abs()  # never report negative zero
+    return total, len(valid), len(failed)
+
+
+def main():
+    if len(sys.argv) != 3:
+        print("Usage: python reconcile.py <input.csv>", file=sys.stderr)
+        sys.exit(1)
+    csv_path = Path(sys.argv[1])
+    if not csv_path.is_file():
+        print(f"Error: File not found: {csv_path}", file=sys.stderr)
+        sys.exit(1)
+    try:
+        total, valid_count, failed_count = reconcile(csv_path)
+    except (ValueError, DecimalException, OSError, csv.Error) as error:
+        print(f"Error processing CSV: {error}", file=sys.stderr)
+        sys.exit(1)
+    # JSON is written by hand so the Decimal total never passes through float.
+    print(f'{{\n  "total_valid_amount": {total:f},\n  "valid_count": {valid_count},'
+          f'\n  "failed_count": {failed_count}\n}}')
+
+
+if __name__ == "__main__":
+    main()
+[?2004hroot@f84aedce5e97:/app# pytest --version || python3 -m pytest --version
+[?2004lbash: pytest: command not found
+/usr/local/bin/python3: No module named pytest
+[?2004hroot@f84aedce5e97:/app# python3 -c 'print("hello")'
+[?2004lhello
+[?2004hroot@f84aedce5e97:/app# cat << 'EOF' > test_reconcile.py
+[?2004l[?2004h> import subprocess
+[?2004l[?2004h> import sys
+[?2004l[?2004h> import tempfile
+[?2004l[?2004h> import os
+[?2004l[?2004h> 
+[?2004l[?2004h> def run_reconcile(csv_content):
+[?2004l[?2004h>     with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv', encoding='utf-8') as f:
+[?2004l[?2004h>         f.write(csv_content)
+[?2004l[?2004h>         fname = f.name
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         res = subprocess.run([sys.executable, 'reconcile.py', fname], capture_output=True, text=True)
+[?2004l[?2004h>         return res.returncode, res.stdout, res.stderr
+[?2004l[?2004h>     finally:
+[?2004l[?2004h>         os.unlink(fname)
+[?2004l[?2004h> 
+[?2004l[?2004h> def test_basic():
+[?2004l[?2004h>     csv = "tx_id,timestamp,amount,status\nt1,2023-01-01T00:00:00Z,100.50,VALID\nt2,2023-01-01T00:00:00Z,50.25,FAILED\nt3,2023-01-01T00:00:00Z,200.00,PENDING\n"
+[?2004l[?2004h>     code, out, err = run_reconcile(csv)
+[?2004l[?2004h>     print("EXIT CODE:", code)
+[?2004l[?2004h>     print("STDOUT:", out)
+[?2004l[?2004h>     print("STDERR:", err)
+[?2004l[?2004h> 
+[?2004l[?2004h> if __name__ == '__main__':
+[?2004l[?2004h>     test_basic()
+[?2004l[?2004h> EOF
+[?2004l[?2004hroot@f84aedce5e97:/app# python3 test_reconcile.py
+[?2004lEXIT CODE: 1
+STDOUT: 
+STDERR: Usage: python reconcile.py <input.csv>
+
+[?2004hroot@f84aedce5e97:/app# cat << 'EOF' > reconcile.py
+[?2004l[?2004h> #!/usr/bin/env python3
+[?2004l[?2004h> """Summarise a transaction CSV (tx_id,timestamp,amount,status) as JSON."""
+[?2004l[?2004h> 
+[?2004l[?2004h> import csv
+[?2004l[?2004h> import sys
+[?2004l[?2004h> from datetime import datetime
+[?2004l[?2004h> from decimal import ROUND_HALF_UP, Decimal, DecimalException, localcontext
+[?2004l[?2004h> from pathlib import Path
+[?2004l[?2004h> 
+[?2004l[?2004h> REQUIRED_COLUMNS = ("tx_id", "timestamp", "amount", "status")
+[?2004l[?2004h> KNOWN_STATUSES = {"VALID", "FAILED", "PENDING"}
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def parse_timestamp(value):
+[?2004l[?2004h>     parsed = datetime.fromisoformat(value)
+[?2004l[?2004h>     if parsed.tzinfo is None:
+[?2004l[?2004h>         raise ValueError(f"Timestamp must include a timezone offset: {value!r}")
+[?2004l[?2004h>     return parsed
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def parse_amount(value):
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         amount = Decimal(value)
+[?2004l[?2004h>     except DecimalException:
+[?2004l[?2004h>         raise ValueError(f"Invalid amount: {value!r}") from None
+[?2004l[?2004h>     if not amount.is_finite():
+[?2004l[?2004h>         raise ValueError(f"Amount must be finite: {value!r}")
+[?2004l[?2004h>     return amount
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def reconcile(csv_path):
+[?2004l[?2004h>     latest = {}
+[?2004l[?2004h>     with open(csv_path, newline="", encoding="utf-8-sig") as handle:
+[?2004l[?2004h>         reader = csv.reader(handle)
+[?2004l[?2004h>         try:
+[?2004l[?2004h>             header = next(reader)
+[?2004l[?2004h>         except StopIteration:
+[?2004l[?2004h>             raise ValueError("CSV file is empty")
+[?2004l[?2004h> 
+[?2004l[?2004h>         header_clean = [col.strip() for col in header]
+[?2004l[?2004h>         if header_clean != list(REQUIRED_COLUMNS):
+[?2004l[?2004h>             raise ValueError("CSV header does not match required columns")
+[?2004l[?2004h> 
+[?2004l[?2004h>         num_cols = len(header)
+[?2004l[?2004h>         line_num = 1
+[?2004l[?2004h>         for row in reader:
+[?2004l[?2004h>             line_num += 1
+[?2004l[?2004h>             if len(row) != num_cols:
+[?2004l[?2004h>                 raise ValueError(f"Row {line_num} has incorrect number of columns")
+[?2004l[?2004h>             
+[?2004l[?2004h>             tx_id, timestamp_str, amount_str, status_str = [val.strip() for val in row]
+[?2004l[?2004h> 
+[?2004l[?2004h>             if not tx_id:
+[?2004l[?2004h>                 raise ValueError(f"Empty transaction ID on line {line_num}")
+[?2004l[?2004h> 
+[?2004l[?2004h>             parsed_ts = parse_timestamp(timestamp_str)
+[?2004l[?2004h>             amount = parse_amount(amount_str)
+[?2004l[?2004h>             status = status_str.upper()
+[?2004l[?2004h> 
+[?2004l[?2004h>             if status not in KNOWN_STATUSES:
+[?2004l[?2004h>                 raise ValueError(f"Unknown status on line {line_num}: {status!r}")
+[?2004l[?2004h> 
+[?2004l[?2004h>             # Keep the most recent record for each transaction ID.
+[?2004l[?2004h>             # If same point in time, retain the first record encountered (strict >).
+[?2004l[?2004h>             previous = latest.get(tx_id)
+[?2004l[?2004h>             if previous is None or parsed_ts > previous["parsed_ts"]:
+[?2004l[?2004h>                 latest[tx_id] = {
+[?2004l[?2004h>                     "parsed_ts": parsed_ts,
+[?2004l[?2004h>                     "amount": amount,
+[?2004l[?2004h>                     "status": status
+[?2004l[?2004h>                 }
+[?2004l[?2004h> 
+[?2004l[?2004h>     valid_txs = [tx for tx in latest.values() if tx["status"] == "VALID"]
+[?2004l[?2004h>     failed_txs = [tx for tx in latest.values() if tx["status"] == "FAILED"]
+[?2004l[?2004h> 
+[?2004l[?2004h>     with localcontext():
+[?2004l[?2004h>         total = sum((tx["amount"], for tx in valid_txs), Decimal(0)) if valid_txs else Decimal(0)
+[?2004l[?2004h>         # Round half up, with halves rounded away from zero
+[?2004l[?2004h>         # For negative numbers, ROUND_HALF_UP rounds towards zero. To round away from zero, we use abs, quantize, and apply sign.
+[?2004l[?2004h>         if total.is_signed() and not total.is_zero():
+[?2004l[?2004h>             total = -abs(total).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+[?2004l[?2004h>         else:
+[?2004l[?2004h>             total = total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+[?2004l[?2004h> 
+[?2004l[?2004h>     if total.is_zero():
+[?2004l[?2004h>         total = total.copy_abs()  # never report negative zero
+[?2004l[?2004h> 
+[?2004l[?2004h>     return total, len(valid_txs), len(failed_txs)
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def main():
+[?2004l[?2004h>     if len(sys.argv) != 2:
+[?2004l[?2004h>         print("Usage: python reconcile.py <input.csv>", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     csv_path = Path(sys.argv[1])
+[?2004l[?2004h>     if not csv_path.is_file():
+[?2004l[?2004h>         print(f"Error: File not found: {csv_path}", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         total, valid_count, failed_count = reconcile(csv_path)
+[?2004l[?2004h>     except (ValueError, DecimalException, OSError, csv.Error) as error:
+[?2004l[?2004h>         print(f"Error processing CSV: {error}", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     # JSON is written by hand so the Decimal total never passes through float.
+[?2004l[?2004h>     print(f'{\n  "total_valid_amount": {total:f},\n  "valid_count": {valid_count},'\
+[?2004l[?2004h>           f'\n  "failed_count": {failed_count}\n}}')
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> if __name__ == "__main__":
+[?2004l[?2004h>     main()
+[?2004l[?2004h> EOF
+[?2004l[?2004hroot@f84aedce5e97:/app# python3 -c 'import reconcile'
+[?2004lTraceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/app/reconcile.py", line 77
+    total = sum((tx["amount"], for tx in valid_txs), Decimal(0)) if valid_txs else Decimal(0)
+                               ^^^
+SyntaxError: invalid syntax
+[?2004hroot@f84aedce5e97:/app# cat << 'EOF' > reconcile.py
+[?2004l[?2004h> #!/usr/bin/env python3
+[?2004l[?2004h> """Summarise a transaction CSV (tx_id,timestamp,amount,status) as JSON."""
+[?2004l[?2004h> 
+[?2004l[?2004h> import csv
+[?2004l[?2004h> import sys
+[?2004l[?2004h> from datetime import datetime
+[?2004l[?2004h> from decimal import ROUND_HALF_UP, Decimal, DecimalException, localcontext
+[?2004l[?2004h> from pathlib import Path
+[?2004l[?2004h> 
+[?2004l[?2004h> REQUIRED_COLUMNS = ("tx_id", "timestamp", "amount", "status")
+[?2004l[?2004h> KNOWN_STATUSES = {"VALID", "FAILED", "PENDING"}
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def parse_timestamp(value):
+[?2004l[?2004h>     parsed = datetime.fromisoformat(value)
+[?2004l[?2004h>     if parsed.tzinfo is None:
+[?2004l[?2004h>         raise ValueError(f"Timestamp must include a timezone offset: {value!r}")
+[?2004l[?2004h>     return parsed
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def parse_amount(value):
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         amount = Decimal(value)
+[?2004l[?2004h>     except DecimalException:
+[?2004l[?2004h>         raise ValueError(f"Invalid amount: {value!r}") from None
+[?2004l[?2004h>     if not amount.is_finite():
+[?2004l[?2004h>         raise ValueError(f"Amount must be finite: {value!r}")
+[?2004l[?2004h>     return amount
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def reconcile(csv_path):
+[?2004l[?2004h>     latest = {}
+[?2004l[?2004h>     with open(csv_path, newline="", encoding="utf-8-sig") as handle:
+[?2004l[?2004h>         reader = csv.reader(handle)
+[?2004l[?2004h>         try:
+[?2004l[?2004h>             header = next(reader)
+[?2004l[?2004h>         except StopIteration:
+[?2004l[?2004h>             raise ValueError("CSV file is empty")
+[?2004l[?2004h> 
+[?2004l[?2004h>         header_clean = [col.strip() for col in header]
+[?2004l[?2004h>         if header_clean != list(REQUIRED_COLUMNS):
+[?2004l[?2004h>             raise ValueError("CSV header does not match required columns")
+[?2004l[?2004h> 
+[?2004l[?2004h>         num_cols = len(header)
+[?2004l[?2004h>         line_num = 1
+[?2004l[?2004h>         for row in reader:
+[?2004l[?2004h>             line_num += 1
+[?2004l[?2004h>             if len(row) != num_cols:
+[?2004l[?2004h>                 raise ValueError(f"Row {line_num} has incorrect number of columns")
+[?2004l[?2004h>             
+[?2004l[?2004h>             tx_id, timestamp_str, amount_str, status_str = [val.strip() for val in row]
+[?2004l[?2004h> 
+[?2004l[?2004h>             if not tx_id:
+[?2004l[?2004h>                 raise ValueError(f"Empty transaction ID on line {line_num}")
+[?2004l[?2004h> 
+[?2004l[?2004h>             parsed_ts = parse_timestamp(timestamp_str)
+[?2004l[?2004h>             amount = parse_amount(amount_str)
+[?2004l[?2004h>             status = status_str.upper()
+[?2004l[?2004h> 
+[?2004l[?2004h>             if status not in KNOWN_STATUSES:
+[?2004l[?2004h>                 raise ValueError(f"Unknown status on line {line_num}: {status!r}")
+[?2004l[?2004h> 
+[?2004l[?2004h>             # Keep the most recent record for each transaction ID.
+[?2004l[?2004h>             # If same point in time, retain the first record encountered (strict >).
+[?2004l[?2004h>             previous = latest.get(tx_id)
+[?2004l[?2004h>             if previous is None or parsed_ts > previous["parsed_ts"]:
+[?2004l[?2004h>                 latest[tx_id] = {
+[?2004l[?2004h>                     "parsed_ts": parsed_ts,
+[?2004l[?2004h>                     "amount": amount,
+[?2004l[?2004h>                     "status": status
+[?2004l[?2004h>                 }
+[?2004l[?2004h> 
+[?2004l[?2004h>     valid_txs = [tx for tx in latest.values() if tx["status"] == "VALID"]
+[?2004l[?2004h>     failed_txs = [tx for tx in latest.values() if tx["status"] == "FAILED"]
+[?2004l[?2004h> 
+[?2004l[?2004h>     with localcontext():
+[?2004l[?2004h>         total = sum((tx["amount"] for tx in valid_txs), Decimal(0)) if valid_txs else Decimal(0)
+[?2004l[?2004h>         # Round half up, with halves rounded away from zero
+[?2004l[?2004h>         # For negative numbers, ROUND_HALF_UP rounds towards zero. To round away from zero, we use abs, quantize, and apply sign.
+[?2004l[?2004h>         if total.is_signed() and not total.is_zero():
+[?2004l[?2004h>             total = -abs(total).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+[?2004l[?2004h>         else:
+[?2004l[?2004h>             total = total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+[?2004l[?2004h> 
+[?2004l[?2004h>     if total.is_zero():
+[?2004l[?2004h>         total = total.copy_abs()  # never report negative zero
+[?2004l[?2004h> 
+[?2004l[?2004h>     return total, len(valid_txs), len(failed_txs)
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def main():
+[?2004l[?2004h>     if len(sys.argv) != 2:
+[?2004l[?2004h>         print("Usage: python reconcile.py <input.csv>", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     csv_path = Path(sys.argv[1])
+[?2004l[?2004h>     if not csv_path.is_file():
+[?2004l[?2004h>         print(f"Error: File not found: {csv_path}", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         total, valid_count, failed_count = reconcile(csv_path)
+[?2004l[?2004h>     except (ValueError, DecimalException, OSError, csv.Error) as error:
+[?2004l[?2004h>         print(f"Error processing CSV: {error}", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     # JSON is written by hand so the Decimal total never passes through float.
+[?2004l[?2004h>     print(f'{\n  "total_valid_amount": {total:f},\n  "valid_count": {valid_count},'\
+[?2004l[?2004h>           f'\n  "failed_count": {failed_count}\n}}')
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> if __name__ == "__main__":
+[?2004l[?2004h>     main()
+[?2004l[?2004h> EOF
+[?2004l[?2004hroot@f84aedce5e97:/app# python3 test_reconcile.py
+[?2004lEXIT CODE: 1
+STDOUT: 
+STDERR:   File "/app/reconcile.py", line 105
+    print(f'{\n  "total_valid_amount": {total:f},\n  "valid_count": {valid_count},'\
+              ^
+SyntaxError: unexpected character after line continuation character
+
+[?2004hroot@f84aedce5e97:/app# cat << 'EOF' > reconcile.py
+[?2004l[?2004h> #!/usr/bin/env python3
+[?2004l[?2004h> """Summarise a transaction CSV (tx_id,timestamp,amount,status) as JSON."""
+[?2004l[?2004h> 
+[?2004l[?2004h> import csv
+[?2004l[?2004h> import sys
+[?2004l[?2004h> from datetime import datetime
+[?2004l[?2004h> from decimal import ROUND_HALF_UP, Decimal, DecimalException, localcontext
+[?2004l[?2004h> from pathlib import Path
+[?2004l[?2004h> 
+[?2004l[?2004h> REQUIRED_COLUMNS = ("tx_id", "timestamp", "amount", "status")
+[?2004l[?2004h> KNOWN_STATUSES = {"VALID", "FAILED", "PENDING"}
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def parse_timestamp(value):
+[?2004l[?2004h>     parsed = datetime.fromisoformat(value)
+[?2004l[?2004h>     if parsed.tzinfo is None:
+[?2004l[?2004h>         raise ValueError(f"Timestamp must include a timezone offset: {value!r}")
+[?2004l[?2004h>     return parsed
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def parse_amount(value):
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         amount = Decimal(value)
+[?2004l[?2004h>     except DecimalException:
+[?2004l[?2004h>         raise ValueError(f"Invalid amount: {value!r}") from None
+[?2004l[?2004h>     if not amount.is_finite():
+[?2004l[?2004h>         raise ValueError(f"Amount must be finite: {value!r}")
+[?2004l[?2004h>     return amount
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def reconcile(csv_path):
+[?2004l[?2004h>     latest = {}
+[?2004l[?2004h>     with open(csv_path, newline="", encoding="utf-8-sig") as handle:
+[?2004l[?2004h>         reader = csv.reader(handle)
+[?2004l[?2004h>         try:
+[?2004l[?2004h>             header = next(reader)
+[?2004l[?2004h>         except StopIteration:
+[?2004l[?2004h>             raise ValueError("CSV file is empty")
+[?2004l[?2004h> 
+[?2004l[?2004h>         header_clean = [col.strip() for col in header]
+[?2004l[?2004h>         if header_clean != list(REQUIRED_COLUMNS):
+[?2004l[?2004h>             raise ValueError("CSV header does not match required columns")
+[?2004l[?2004h> 
+[?2004l[?2004h>         num_cols = len(header)
+[?2004l[?2004h>         line_num = 1
+[?2004l[?2004h>         for row in reader:
+[?2004l[?2004h>             line_num += 1
+[?2004l[?2004h>             if len(row) != num_cols:
+[?2004l[?2004h>                 raise ValueError(f"Row {line_num} has incorrect number of columns")
+[?2004l[?2004h>             
+[?2004l[?2004h>             tx_id, timestamp_str, amount_str, status_str = [val.strip() for val in row]
+[?2004l[?2004h> 
+[?2004l[?2004h>             if not tx_id:
+[?2004l[?2004h>                 raise ValueError(f"Empty transaction ID on line {line_num}")
+[?2004l[?2004h> 
+[?2004l[?2004h>             parsed_ts = parse_timestamp(timestamp_str)
+[?2004l[?2004h>             amount = parse_amount(amount_str)
+[?2004l[?2004h>             status = status_str.upper()
+[?2004l[?2004h> 
+[?2004l[?2004h>             if status not in KNOWN_STATUSES:
+[?2004l[?2004h>                 raise ValueError(f"Unknown status on line {line_num}: {status!r}")
+[?2004l[?2004h> 
+[?2004l[?2004h>             # Keep the most recent record for each transaction ID.
+[?2004l[?2004h>             # If same point in time, retain the first record encountered (strict >).
+[?2004l[?2004h>             previous = latest.get(tx_id)
+[?2004l[?2004h>             if previous is None or parsed_ts > previous["parsed_ts"]:
+[?2004l[?2004h>                 latest[tx_id] = {
+[?2004l[?2004h>                     "parsed_ts": parsed_ts,
+[?2004l[?2004h>                     "amount": amount,
+[?2004l[?2004h>                     "status": status
+[?2004l[?2004h>                 }
+[?2004l[?2004h> 
+[?2004l[?2004h>     valid_txs = [tx for tx in latest.values() if tx["status"] == "VALID"]
+[?2004l[?2004h>     failed_txs = [tx for tx in latest.values() if tx["status"] == "FAILED"]
+[?2004l[?2004h> 
+[?2004l[?2004h>     with localcontext():
+[?2004l[?2004h>         total = sum((tx["amount"] for tx in valid_txs), Decimal(0)) if valid_txs else Decimal(0)
+[?2004l[?2004h>         # Round half up, with halves rounded away from zero
+[?2004l[?2004h>         # For negative numbers, ROUND_HALF_UP rounds towards zero. To round away from zero, we use abs, quantize, and apply sign.
+[?2004l[?2004h>         if total.is_signed() and not total.is_zero():
+[?2004l[?2004h>             total = -abs(total).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+[?2004l[?2004h>         else:
+[?2004l[?2004h>             total = total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+[?2004l[?2004h> 
+[?2004l[?2004h>     if total.is_zero():
+[?2004l[?2004h>         total = total.copy_abs()  # never report negative zero
+[?2004l[?2004h> 
+[?2004l[?2004h>     return total, len(valid_txs), len(failed_txs)
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def main():
+[?2004l[?2004h>     if len(sys.argv) != 2:
+[?2004l[?2004h>         print("Usage: python reconcile.py <input.csv>", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     csv_path = Path(sys.argv[1])
+[?2004l[?2004h>     if not csv_path.is_file():
+[?2004l[?2004h>         print(f"Error: File not found: {csv_path}", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         total, valid_count, failed_count = reconcile(csv_path)
+[?2004l[?2004h>     except (ValueError, DecimalException, OSError, csv.Error) as error:
+[?2004l[?2004h>         print(f"Error processing CSV: {error}", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     # JSON is written by hand so the Decimal total never passes through float.
+[?2004l[?2004h>     output = (
+[?2004l[?2004h>         "{\n"
+[?2004l[?2004h>         f'  "total_valid_amount": {total:f},\n'
+[?2004l[?2004h>         f'  "valid_count": {valid_count},\n'
+[?2004l[?2004h>         f'  "failed_count": {failed_count}\n'
+[?2004l[?2004h>         "}"
+[?2004l[?2004h>     )
+[?2004l[?2004h>     print(output)
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> if __name__ == "__main__":
+[?2004l[?2004h>     main()
+[?2004l[?2004h> EOF
+[?2004l[?2004hroot@f84aedce5e97:/app# python3 test_reconcile.py
+[?2004lEXIT CODE: 0
+STDOUT: {
+  "total_valid_amount": 100.50,
+  "valid_count": 1,
+  "failed_count": 1
+}
+
+STDERR: 
+[?2004hroot@f84aedce5e97:/app# cat << 'EOF' > test_reconcile.py
+[?2004l[?2004h> import subprocess
+[?2004l[?2004h> import sys
+[?2004l[?2004h> import tempfile
+[?2004l[?2004h> import os
+[?2004l[?2004h> import json
+[?2004l[?2004h> 
+[?2004l[?2004h> def run_reconcile(csv_content):
+[?2004l[?2004h>     with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv', encoding='utf-8') as f:
+[?2004l[?2004h>         f.write(csv_content)
+[?2004l[?2004h>         fname = f.name
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         res = subprocess.run([sys.executable, 'reconcile.py', fname], capture_output=True, text=True)
+[?2004l[?2004h>         return res.returncode, res.stdout, res.stderr
+[?2004l[?2004h>     finally:
+[?2004l[?2004h>         os.unlink(fname)
+[?2004l[?2004h> 
+[?2004l[?2004h> def test_all():
+[?2004l[?2004h>     # Test 1: Basic deduplication and status filtering
+[?2004l[?2004h>     csv = '''tx_id,timestamp,amount,status
+[?2004l[?2004h> t1,2023-01-01T00:00:00Z,100.00,VALID
+[?2004l[?2004h> t1,2023-01-01T01:00:00Z,150.00,VALID
+[?2004l[?2004h> t2,2023-01-01T00:00:00Z,50.00,FAILED
+[?2004l[?2004h> t3,2023-01-01T00:00:00Z,200.00,PENDING
+[?2004l[?2004h> '''
+[?2004l[?2004h>     code, out, err = run_reconcile(csv)
+[?2004l[?2004h>     assert code == 0, f"Failed with err: {err}"
+[?2004l[?2004h>     data = json.loads(out)
+[?2004l[?2004h>     assert data["total_valid_amount"] == 150.00
+[?2004l[?2004h>     assert data["valid_count"] == 1
+[?2004l[?2004h>     assert data["failed_count"] == 1
+[?2004l[?2004h>     print("Test 1 passed")
+[?2004l[?2004h> 
+[?2004l[?2004h>     # Test 2: Same point in time with different offsets -> retain first
+[?2004l[?2004h>     csv = '''tx_id,timestamp,amount,status
+[?2004l[?2004h> t1,2023-01-01T02:00:00+02:00,100.00,VALID
+[?2004l[?2004h> t1,2023-01-01T01:00:00+01:00,200.00,VALID
+[?2004l[?2004h> '''
+[?2004l[?2004h>     code, out, err = run_reconcile(csv)
+[?2004l[?2004h>     assert code == 0, f"Failed with err: {err}"
+[?2004l[?2004h>     data = json.loads(out)
+[?2004l[?2004h>     assert data["total_valid_amount"] == 100.00
+[?2004l[?2004h>     print("Test 2 passed")
+[?2004l[?2004h> 
+[?2004l[?2004h>     # Test 3: Rounding half up away from zero (-2.345 -> -2.35)
+[?2004l[?2004h>     csv = '''tx_id,timestamp,amount,status
+[?2004l[?2004h> t1,2023-01-01T00:00:00Z,-2.345,VALID
+[?2004l[?2004h> '''
+[?2004l[?2004h>     code, out, err = run_reconcile(csv)
+[?2004l[?2004h>     assert code == 0, f"Failed with err: {err}"
+[?2004l[?2004h>     data = json.loads(out)
+[?2004l[?2004h>     assert data["total_valid_amount"] == -2.35
+[?2004l[?2004h>     print("Test 3 passed")
+[?2004l[?2004h> 
+[?2004l[?2004h>     # Test 4: Missing timezone -> error
+[?2004l[?2004h>     csv = '''tx_id,timestamp,amount,status
+[?2004l[?2004h> t1,2023-01-01T00:00:00,100.00,VALID
+[?2004l[?2004h> '''
+[?2004l[?2004h>     code, out, err = run_reconcile(csv)
+[?2004l[?2004h>     assert code != 0
+[?2004l[?2004h>     print("Test 4 passed")
+[?2004l[?2004h> 
+[?2004l[?2004h>     # Test 5: Invalid amount (NaN) -> error
+[?2004l[?2004h>     csv = '''tx_id,timestamp,amount,status
+[?2004l[?2004h> t1,2023-01-01T00:00:00Z,NaN,VALID
+[?2004l[?2004h> '''
+[?2004l[?2004h>     code, out, err = run_reconcile(csv)
+[?2004l[?2004h>     assert code != 0
+[?2004l[?2004h>     print("Test 5 passed")
+[?2004l[?2004h> 
+[?2004l[?2004h>     print("All tests passed successfully!")
+[?2004l[?2004h> 
+[?2004l[?2004h> if __name__ == '__main__':
+[?2004l[?2004h>     test_all()
+[?2004l[?2004h> EOF
+[?2004l[?2004hroot@f84aedce5e97:/app# python3 test_reconcile.py
+[?2004lTest 1 passed
+Test 2 passed
+Test 3 passed
+Test 4 passed
+Test 5 passed
+All tests passed successfully!
+[?2004hroot@f84aedce5e97:/app# rm test_reconcile.py
+[?2004l[?2004hroot@f84aedce5e97:/app# ls -la
+[?2004ltotal 20
+drwxr-xr-x 1 root root 4096 Nov 17 14:25 .
+drwxr-xr-x 1 root root 4096 Nov 17 14:21 ..
+-rwxrwxrwx 1 root root 4100 Nov 17 14:25 reconcile.py
+[?2004hroot@f84aedce5e97:/app# 

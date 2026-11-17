@@ -1,0 +1,314 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 30,
+            "passed": 30,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1794924490.6827931,
+            "stop": 1794924491.6714892
+        },
+        "tests": [
+            {
+                "name": "test_state.py::TestPlantedCliArguments::test_accepts_exactly_one_argument",
+                "status": "passed",
+                "duration": 0.02059330699921702,
+                "start": 1794924490.6983101,
+                "stop": 1794924490.719118,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedCliArguments::test_rejects_two_arguments",
+                "status": "passed",
+                "duration": 0.01911311799995019,
+                "start": 1794924490.719304,
+                "stop": 1794924490.738605,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedCliArguments::test_rejects_no_arguments",
+                "status": "passed",
+                "duration": 0.016615471002296545,
+                "start": 1794924490.7387853,
+                "stop": 1794924490.7555568,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedStatusFilter::test_pending_counts_toward_nothing",
+                "status": "passed",
+                "duration": 0.018189300997619284,
+                "start": 1794924490.755732,
+                "stop": 1794924490.7740922,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedStatusFilter::test_pending_status_is_case_and_space_insensitive",
+                "status": "passed",
+                "duration": 0.01712349599620211,
+                "start": 1794924490.774261,
+                "stop": 1794924490.791623,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedStatusFilter::test_only_pending_rows",
+                "status": "passed",
+                "duration": 0.01746928300417494,
+                "start": 1794924490.791817,
+                "stop": 1794924490.809448,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedStatusFilter::test_latest_pending_record_supersedes_valid_and_failed",
+                "status": "passed",
+                "duration": 0.01719642700481927,
+                "start": 1794924490.8096268,
+                "stop": 1794924490.8269928,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedTimestampOrder::test_later_instant_with_smaller_string_wins",
+                "status": "passed",
+                "duration": 0.018363900999247562,
+                "start": 1794924490.8271606,
+                "stop": 1794924490.8456998,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedTimestampOrder::test_earlier_instant_with_larger_string_loses",
+                "status": "passed",
+                "duration": 0.01800026500131935,
+                "start": 1794924490.8459225,
+                "stop": 1794924490.864099,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedTimestampOrder::test_offsets_across_a_date_boundary",
+                "status": "passed",
+                "duration": 0.017961296995054,
+                "start": 1794924490.8642805,
+                "stop": 1794924490.882429,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedTimestampOrder::test_z_suffix_compared_with_numeric_offset",
+                "status": "passed",
+                "duration": 0.020405558003403712,
+                "start": 1794924490.8826177,
+                "stop": 1794924490.9032075,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedTimestampOrder::test_same_instant_different_offsets_keeps_first",
+                "status": "passed",
+                "duration": 0.017802686998038553,
+                "start": 1794924490.903378,
+                "stop": 1794924490.9213455,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestPlantedTimestampOrder::test_mixed_dataset",
+                "status": "passed",
+                "duration": 0.017378712000208907,
+                "start": 1794924490.9215097,
+                "stop": 1794924490.9390635,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestRobustnessTiesAndRounding::test_identical_timestamps_keep_first_record",
+                "status": "passed",
+                "duration": 0.017326512996078236,
+                "start": 1794924490.9392297,
+                "stop": 1794924490.9567149,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::first, second, expected::[('VALID', 'FAILED', ('8.00', 1, 0)), ('FAILED', 'VALID', ('0', 0, 1))]"
+                ]
+            },
+            {
+                "name": "test_state.py::TestRobustnessTiesAndRounding::test_round_half_up_to_cents",
+                "status": "passed",
+                "duration": 0.017447420996177243,
+                "start": 1794924490.9748769,
+                "stop": 1794924490.9924889,
+                "retries": 5,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::amounts, expected::[(['0.125'], '0.13'), (['2.675'], '2.68'), (['1.005', '1.005'], '2.01'), (['0.1', '0.2'], '0.30'), (['-1.125'], '-1.13'), (['10'], '10.00')]"
+                ]
+            },
+            {
+                "name": "test_state.py::TestRobustnessTiesAndRounding::test_large_totals_keep_decimal_precision",
+                "status": "passed",
+                "duration": 0.01774718099841266,
+                "start": 1794924491.0829391,
+                "stop": 1794924491.1008582,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::amounts, expected::[(['98765432109876543.21', '0.01'], '98765432109876543.22'), (['12345678901234567890.125'], '12345678901234567890.13')]"
+                ]
+            },
+            {
+                "name": "test_state.py::TestRobustnessTiesAndRounding::test_negative_zero_is_normalised",
+                "status": "passed",
+                "duration": 0.01766915600092034,
+                "start": 1794924491.1191173,
+                "stop": 1794924491.1369476,
+                "retries": 2,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::amounts::[['-0.004'], ['0.004', '-0.006'], ['-0.00']]"
+                ]
+            },
+            {
+                "name": "test_state.py::TestRobustnessTiesAndRounding::test_header_only_file",
+                "status": "passed",
+                "duration": 0.017771613001968944,
+                "start": 1794924491.1728866,
+                "stop": 1794924491.190812,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestRobustnessAcceptedInput::test_utf8_bom_before_header",
+                "status": "passed",
+                "duration": 0.017874251996545354,
+                "start": 1794924491.1909802,
+                "stop": 1794924491.209037,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestRobustnessAcceptedInput::test_valid_and_failed_status_normalisation",
+                "status": "passed",
+                "duration": 0.017149840994534316,
+                "start": 1794924491.2092023,
+                "stop": 1794924491.2265193,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_invalid_or_offsetless_timestamp",
+                "status": "passed",
+                "duration": 0.01807942099912907,
+                "start": 1794924491.2266986,
+                "stop": 1794924491.2449484,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::timestamp::['2024-07-01T12:00:00', '2024-07-01', 'not-a-date', '']"
+                ]
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_offsetless_timestamp_on_non_valid_row",
+                "status": "passed",
+                "duration": 0.024061869000433944,
+                "start": 1794924491.3049574,
+                "stop": 1794924491.3292785,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_offsetless_timestamp_on_superseded_row",
+                "status": "passed",
+                "duration": 0.018365519998042146,
+                "start": 1794924491.329453,
+                "stop": 1794924491.348024,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_unknown_or_empty_status",
+                "status": "passed",
+                "duration": 0.017975195001781685,
+                "start": 1794924491.3482625,
+                "stop": 1794924491.3664186,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::status::['CANCELLED', 'refunded', '', '   ']"
+                ]
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_unknown_status_on_superseded_row",
+                "status": "passed",
+                "duration": 0.01759130699792877,
+                "start": 1794924491.4207191,
+                "stop": 1794924491.4384832,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_short_or_overlong_row",
+                "status": "passed",
+                "duration": 0.01826636500118184,
+                "start": 1794924491.4386477,
+                "stop": 1794924491.4570727,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::row::['x1,2024-07-01T12:00:00+00:00', 'x1,2024-07-01T12:00:00+00:00,1.00', 'x1', 'x1,2024-07-01T12:00:00+00:00,1.00,VALID,extra']"
+                ]
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_invalid_amount",
+                "status": "passed",
+                "duration": 0.018431972999678692,
+                "start": 1794924491.5131397,
+                "stop": 1794924491.531838,
+                "retries": 4,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::amount::['abc', '', 'NaN', 'Infinity', '-inf']"
+                ]
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_empty_transaction_id",
+                "status": "passed",
+                "duration": 0.0173211330002232,
+                "start": 1794924491.6010265,
+                "stop": 1794924491.6185067,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::tx_id::['', '   ']"
+                ]
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_missing_required_column",
+                "status": "passed",
+                "duration": 0.016969000997050898,
+                "start": 1794924491.636436,
+                "stop": 1794924491.6536052,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestRobustnessRejectedInput::test_missing_input_file",
+                "status": "passed",
+                "duration": 0.017397345996869262,
+                "start": 1794924491.653769,
+                "stop": 1794924491.6713247,
+                "retries": 0,
+                "file_path": "test_state.py"
+            }
+        ]
+    }
+}

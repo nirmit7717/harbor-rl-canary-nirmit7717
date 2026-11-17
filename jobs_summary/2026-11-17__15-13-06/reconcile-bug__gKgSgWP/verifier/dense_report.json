@@ -1,0 +1,143 @@
+{
+  "seed": 6000507944474941637,
+  "weights": {
+    "C1": "0.20",
+    "C2": "0.30",
+    "C3": "0.50"
+  },
+  "checks": {
+    "C1": {
+      "passed": false,
+      "weight": "0.20",
+      "cases": [
+        {
+          "case": "plain 3 rows",
+          "rows": 3,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "plain 5 rows",
+          "rows": 5,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "plain 8 rows",
+          "rows": 8,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "plain 12 rows",
+          "rows": 12,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "plain 40 rows",
+          "rows": 40,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "row-order invariance (rows of case 2 shuffled)",
+          "rows": 5,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        }
+      ]
+    },
+    "C2": {
+      "passed": false,
+      "weight": "0.30",
+      "cases": [
+        {
+          "case": "mixed statuses 4 rows",
+          "rows": 4,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "mixed statuses 6 rows",
+          "rows": 6,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "mixed statuses 9 rows",
+          "rows": 9,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "mixed statuses 15 rows",
+          "rows": 15,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "mixed statuses 30 rows",
+          "rows": 30,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "adding a new PENDING transaction changes nothing",
+          "rows": 5,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "row-order invariance (rows of case 3 shuffled)",
+          "rows": 9,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        }
+      ]
+    },
+    "C3": {
+      "passed": false,
+      "weight": "0.50",
+      "cases": [
+        {
+          "case": "8 tx groups: disagree,disagree,disagree,tie_hi,tie_lo,single,single,single",
+          "rows": 13,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "6 tx groups: disagree,disagree,tie_hi,tie_lo,single,single",
+          "rows": 10,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "6 tx groups: disagree,disagree,disagree,tie_hi,single,single",
+          "rows": 10,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "4 tx groups: disagree,disagree,tie_hi,tie_lo",
+          "rows": 8,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "5 tx groups: disagree,disagree,disagree,tie_hi,single",
+          "rows": 9,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        },
+        {
+          "case": "7 tx groups: disagree,disagree,disagree,tie_hi,tie_lo,single,single",
+          "rows": 12,
+          "passed": false,
+          "reason": "exit 1: Usage: python reconcile.py <input.csv>"
+        }
+      ]
+    }
+  },
+  "score": "0.00"
+}

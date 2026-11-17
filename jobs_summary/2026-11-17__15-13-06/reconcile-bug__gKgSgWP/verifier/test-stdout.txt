@@ -1,0 +1,20 @@
+[C1] FAIL plain 3 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C1] FAIL plain 5 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C1] FAIL plain 8 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C1] FAIL plain 12 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C1] FAIL plain 40 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C1] FAIL row-order invariance (rows of case 2 shuffled) -- exit 1: Usage: python reconcile.py <input.csv>
+[C2] FAIL mixed statuses 4 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C2] FAIL mixed statuses 6 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C2] FAIL mixed statuses 9 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C2] FAIL mixed statuses 15 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C2] FAIL mixed statuses 30 rows -- exit 1: Usage: python reconcile.py <input.csv>
+[C2] FAIL adding a new PENDING transaction changes nothing -- exit 1: Usage: python reconcile.py <input.csv>
+[C2] FAIL row-order invariance (rows of case 3 shuffled) -- exit 1: Usage: python reconcile.py <input.csv>
+[C3] FAIL 8 tx groups: disagree,disagree,disagree,tie_hi,tie_lo,single,single,single -- exit 1: Usage: python reconcile.py <input.csv>
+[C3] FAIL 6 tx groups: disagree,disagree,tie_hi,tie_lo,single,single -- exit 1: Usage: python reconcile.py <input.csv>
+[C3] FAIL 6 tx groups: disagree,disagree,disagree,tie_hi,single,single -- exit 1: Usage: python reconcile.py <input.csv>
+[C3] FAIL 4 tx groups: disagree,disagree,tie_hi,tie_lo -- exit 1: Usage: python reconcile.py <input.csv>
+[C3] FAIL 5 tx groups: disagree,disagree,disagree,tie_hi,single -- exit 1: Usage: python reconcile.py <input.csv>
+[C3] FAIL 7 tx groups: disagree,disagree,disagree,tie_hi,tie_lo,single,single -- exit 1: Usage: python reconcile.py <input.csv>
+dense reward: 0.00

@@ -21,7 +21,11 @@ The CSV file contains the following columns:
 
 The input file may contain multiple records with the same transaction ID.
 
+The file is UTF-8 encoded and may begin with a UTF-8 byte order mark (BOM), which must be accepted.
+
 ## Processing Rules
+
+The application must first validate all input rows and resolve duplicate transaction IDs. Only after deduplication should the retained records be classified by status and included in the appropriate output counts and totals.
 
 ### 1. Transaction Deduplication
 
@@ -31,7 +35,7 @@ If multiple records share the same tx_id, retain the record with the most recent
 
 Timestamps must be interpreted as actual points in time, taking their timezone information into account. Two timestamps with different UTC offsets must still be compared chronologically.
 
-If two records for the same transaction have exactly the same timestamp, retain the first record encountered in the input file.
+If two records for the same transaction represent the same point in time, even when written with different UTC offsets, retain the first record encountered in the input file.
 
 ### 2. Transaction Status
 
@@ -51,7 +55,11 @@ Calculate the total amount using only the final deduplicated transactions with a
 
 Monetary values must be handled with decimal precision rather than relying on floating-point arithmetic.
 
-The final total must be rounded to two decimal places using the standard financial rounding rule (round half up).
+The final total must be rounded to two decimal places using round half up, with halves rounded away from zero (for example, 2.345 becomes 2.35 and -2.345 becomes -2.35).
+
+The total must keep full decimal precision and must not be converted to a binary floating-point value at any stage, including JSON output.
+
+A total that rounds to zero must be reported as 0, never as negative zero.
 
 ### 4. Input Validation
 
@@ -61,10 +69,14 @@ In particular:
 
 - Timestamps must be valid ISO 8601 timestamps containing timezone information.
 - Amounts must be valid numeric monetary values.
-- Transaction statuses must belong to the supported status set.
+- Transaction statuses must belong to the supported status set. Empty or whitespace-only statuses are invalid.
 - The input CSV must contain the required columns.
+- Transaction IDs must not be empty or contain only whitespace.
+- Monetary amounts must be finite numeric values. Values such as NaN and Infinity are invalid.
+- Each data row must contain exactly the fields defined by the header; rows with missing or extra fields must be rejected.
+- Validation applies to every data row, including PENDING rows and rows superseded by a later record for the same transaction ID.
 
-If the input cannot be processed, the application should terminate with a non-zero exit status and provide a meaningful error message.
+If the input cannot be processed, the application should terminate with a non-zero exit status, print a meaningful error message to standard error, and must not print a summary or an uncaught exception traceback.
 
 ## Output
 
@@ -84,11 +96,13 @@ Field descriptions:
 | valid_count | Number of final deduplicated transactions with status VALID |
 | failed_count | Number of final deduplicated transactions with status FAILED |
 
+`total_valid_amount` must be a JSON number (not a string); `valid_count` and `failed_count` must be JSON integers.
+
 Transactions with a final status of PENDING must not contribute to either count or to the total valid amount.
 
 ## Execution
 
-The application must be executable using:
+The application is located at `/app/reconcile.py` and must be executable using:
 
     python reconcile.py <input_csv_path>
 

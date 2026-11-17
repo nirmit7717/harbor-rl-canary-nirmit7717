@@ -1,0 +1,20 @@
+[C1] PASS plain 3 rows
+[C1] PASS plain 5 rows
+[C1] PASS plain 8 rows
+[C1] PASS plain 12 rows
+[C1] PASS plain 40 rows
+[C1] PASS row-order invariance (rows of case 2 shuffled)
+[C2] PASS mixed statuses 4 rows
+[C2] PASS mixed statuses 6 rows
+[C2] PASS mixed statuses 9 rows
+[C2] PASS mixed statuses 15 rows
+[C2] PASS mixed statuses 30 rows
+[C2] PASS adding a new PENDING transaction changes nothing
+[C2] PASS row-order invariance (rows of case 3 shuffled)
+[C3] FAIL 6 tx groups: disagree,tie_hi,tie_lo,single,single,single -- total_valid_amount 27558.44 != 54573.12
+[C3] FAIL 6 tx groups: disagree,disagree,disagree,tie_hi,single,single -- total_valid_amount 29012.38 != 64151.98
+[C3] FAIL 3 tx groups: disagree,tie_hi,single -- total_valid_amount 18507.44 != 14677.74
+[C3] FAIL 4 tx groups: disagree,disagree,tie_hi,single -- total_valid_amount 20534.97 != 14602.27
+[C3] FAIL 5 tx groups: disagree,tie_hi,single,single,single -- total_valid_amount 66365.62 != 54989.07
+[C3] FAIL 3 tx groups: disagree,disagree,tie_hi -- total_valid_amount 33434.76 != 27020.30
+dense reward: 0.50

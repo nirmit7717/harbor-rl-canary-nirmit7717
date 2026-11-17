@@ -2,35 +2,52 @@
 """Summarise a transaction CSV (tx_id,timestamp,amount,status) as JSON."""
 
 import csv
-import json
 import sys
-from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
+from datetime import datetime
+from decimal import MAX_PREC, ROUND_HALF_UP, Decimal, DecimalException, localcontext
 from pathlib import Path
 
-REQUIRED_COLUMNS = {"tx_id", "timestamp", "amount", "status"}
+REQUIRED_COLUMNS = ("tx_id", "timestamp", "amount", "status")
 KNOWN_STATUSES = {"VALID", "FAILED", "PENDING"}
+
+
+def parse_timestamp(value):
+    parsed = datetime.fromisoformat(value)
+    if parsed.tzinfo is None:
+        raise ValueError(f"Timestamp must include a UTC offset: {value!r}")
+    return parsed
+
+
+def parse_amount(value):
+    try:
+        amount = Decimal(value)
+    except DecimalException:
+        raise ValueError(f"Invalid amount: {value!r}") from None
+    if not amount.is_finite():
+        raise ValueError(f"Amount must be finite: {value!r}")
+    return amount
 
 
 def reconcile(csv_path):
     latest = {}
-
-    with open(csv_path, newline="", encoding="utf-8") as handle:
+    with open(csv_path, newline="", encoding="utf-8-sig") as handle:
         reader = csv.DictReader(handle)
-        if not REQUIRED_COLUMNS.issubset(reader.fieldnames or []):
+        if not set(REQUIRED_COLUMNS).issubset(reader.fieldnames or []):
             raise ValueError("CSV is missing required columns")
 
         for row in reader:
+            if None in row or None in row.values():
+                raise ValueError(f"Malformed row on line {reader.line_num}")
             tx_id = row["tx_id"].strip()
             timestamp = row["timestamp"].strip()
-            amount = Decimal(row["amount"].strip())
+            parse_timestamp(timestamp)
+            amount = parse_amount(row["amount"].strip())
             status = row["status"].strip().upper()
 
             if not tx_id:
-                raise ValueError("Transaction ID cannot be empty")
-            if not amount.is_finite():
-                raise ValueError(f"Amount must be finite: {amount}")
+                raise ValueError(f"Empty transaction ID on line {reader.line_num}")
             if status not in KNOWN_STATUSES:
-                raise ValueError(f"Unknown status: {status}")
+                raise ValueError(f"Unknown status on line {reader.line_num}: {status!r}")
 
             # Keep the most recent record for each transaction ID.
             previous = latest.get(tx_id)
@@ -39,32 +56,30 @@ def reconcile(csv_path):
 
     valid = [tx for tx in latest.values() if tx["status"] in ("VALID", "PENDING")]
     failed = [tx for tx in latest.values() if tx["status"] == "FAILED"]
-    total = sum((tx["amount"] for tx in valid), Decimal("0"))
-
-    return {
-        "total_valid_amount": float(total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)),
-        "valid_count": len(valid),
-        "failed_count": len(failed),
-    }
+    with localcontext(prec=MAX_PREC):
+        total = sum((tx["amount"] for tx in valid), Decimal(0))
+        total = total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    if total.is_zero():
+        total = total.copy_abs()  # never report negative zero
+    return total, len(valid), len(failed)
 
 
 def main():
     if len(sys.argv) != 3:
         print("Usage: python reconcile.py <input.csv>", file=sys.stderr)
         sys.exit(1)
-
     csv_path = Path(sys.argv[1])
     if not csv_path.is_file():
         print(f"Error: File not found: {csv_path}", file=sys.stderr)
         sys.exit(1)
-
     try:
-        result = reconcile(csv_path)
-    except (ValueError, KeyError, InvalidOperation, OSError, csv.Error) as error:
+        total, valid_count, failed_count = reconcile(csv_path)
+    except (ValueError, DecimalException, OSError, csv.Error) as error:
         print(f"Error processing CSV: {error}", file=sys.stderr)
         sys.exit(1)
-
-    print(json.dumps(result, indent=2))
+    # JSON is written by hand so the Decimal total never passes through float.
+    print(f'{{\n  "total_valid_amount": {total:f},\n  "valid_count": {valid_count},'
+          f'\n  "failed_count": {failed_count}\n}}')
 
 
 if __name__ == "__main__":

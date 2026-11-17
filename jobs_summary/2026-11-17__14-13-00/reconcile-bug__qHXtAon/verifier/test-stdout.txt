@@ -1,0 +1,2214 @@
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease
+Hit:3 http://deb.debian.org/debian-security trixie-security InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  bash-completion krb5-locales libbrotli1 libcom-err2 libcurl4t64
+  libgnutls30t64 libgssapi-krb5-2 libidn2-0 libk5crypto3 libkeyutils1
+  libkrb5-3 libkrb5support0 libldap-common libldap2 libnghttp2-14 libnghttp3-9
+  libp11-kit0 libpsl5t64 librtmp1 libsasl2-2 libsasl2-modules
+  libsasl2-modules-db libssh2-1t64 libtasn1-6 libunistring5 publicsuffix
+Suggested packages:
+  gnutls-bin krb5-doc krb5-user libsasl2-modules-gssapi-mit
+  | libsasl2-modules-gssapi-heimdal libsasl2-modules-ldap libsasl2-modules-otp
+  libsasl2-modules-sql
+The following NEW packages will be installed:
+  bash-completion curl krb5-locales libbrotli1 libcom-err2 libcurl4t64
+  libgnutls30t64 libgssapi-krb5-2 libidn2-0 libk5crypto3 libkeyutils1
+  libkrb5-3 libkrb5support0 libldap-common libldap2 libnghttp2-14 libnghttp3-9
+  libp11-kit0 libpsl5t64 librtmp1 libsasl2-2 libsasl2-modules
+  libsasl2-modules-db libssh2-1t64 libtasn1-6 libunistring5 publicsuffix
+0 upgraded, 27 newly installed, 0 to remove and 1 not upgraded.
+Need to get 5703 kB of archives.
+After this operation, 18.3 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian trixie/main amd64 bash-completion all 1:2.16.0-7 [319 kB]
+Get:2 http://deb.debian.org/debian trixie/main amd64 krb5-locales all 1.21.3-5+deb13u1 [101 kB]
+Get:3 http://deb.debian.org/debian-security trixie-security/main amd64 libbrotli1 amd64 1.1.0-2+deb13u1 [304 kB]
+Get:4 http://deb.debian.org/debian trixie/main amd64 libkrb5support0 amd64 1.21.3-5+deb13u1 [33.1 kB]
+Get:5 http://deb.debian.org/debian trixie/main amd64 libcom-err2 amd64 1.47.2-3+b12 [25.0 kB]
+Get:6 http://deb.debian.org/debian trixie/main amd64 libk5crypto3 amd64 1.21.3-5+deb13u1 [81.2 kB]
+Get:7 http://deb.debian.org/debian trixie/main amd64 libkeyutils1 amd64 1.6.3-6 [9456 B]
+Get:8 http://deb.debian.org/debian trixie/main amd64 libkrb5-3 amd64 1.21.3-5+deb13u1 [326 kB]
+Get:9 http://deb.debian.org/debian trixie/main amd64 libgssapi-krb5-2 amd64 1.21.3-5+deb13u1 [138 kB]
+Get:10 http://deb.debian.org/debian trixie/main amd64 libunistring5 amd64 1.3-2 [477 kB]
+Get:11 http://deb.debian.org/debian trixie/main amd64 libidn2-0 amd64 2.3.8-2 [109 kB]
+Get:12 http://deb.debian.org/debian trixie/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg1-9 [19.8 kB]
+Get:13 http://deb.debian.org/debian trixie/main amd64 libsasl2-2 amd64 2.1.28+dfsg1-9 [57.5 kB]
+Get:14 http://deb.debian.org/debian trixie/main amd64 libldap2 amd64 2.6.10+dfsg-1 [194 kB]
+Get:15 http://deb.debian.org/debian trixie/main amd64 libnghttp2-14 amd64 1.64.0-1.1+deb13u1 [76.2 kB]
+Get:16 http://deb.debian.org/debian trixie/main amd64 libnghttp3-9 amd64 1.8.0-1 [67.7 kB]
+Get:17 http://deb.debian.org/debian trixie/main amd64 libpsl5t64 amd64 0.21.2-1.1+b1 [57.2 kB]
+Get:18 http://deb.debian.org/debian trixie/main amd64 libp11-kit0 amd64 0.25.5-3 [425 kB]
+Get:19 http://deb.debian.org/debian trixie/main amd64 libtasn1-6 amd64 4.20.0-2+deb13u1 [50.1 kB]
+Get:20 http://deb.debian.org/debian trixie/main amd64 libgnutls30t64 amd64 3.8.9-3+deb13u4 [1469 kB]
+Get:21 http://deb.debian.org/debian trixie/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b5 [58.8 kB]
+Get:22 http://deb.debian.org/debian trixie/main amd64 libssh2-1t64 amd64 1.11.1-1+deb13u2 [245 kB]
+Get:23 http://deb.debian.org/debian-security trixie-security/main amd64 libcurl4t64 amd64 8.14.1-2+deb13u7 [392 kB]
+Get:24 http://deb.debian.org/debian-security trixie-security/main amd64 curl amd64 8.14.1-2+deb13u7 [270 kB]
+Get:25 http://deb.debian.org/debian trixie/main amd64 libldap-common all 2.6.10+dfsg-1 [35.1 kB]
+Get:26 http://deb.debian.org/debian trixie/main amd64 libsasl2-modules amd64 2.1.28+dfsg1-9 [66.7 kB]
+Get:27 http://deb.debian.org/debian trixie/main amd64 publicsuffix all 20250328.1952-0.1 [296 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 27.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
+Fetched 5703 kB in 2s (3702 kB/s)
+Selecting previously unselected package bash-completion.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6740 files and directories currently installed.)
+Preparing to unpack .../00-bash-completion_1%3a2.16.0-7_all.deb ...
+Unpacking bash-completion (1:2.16.0-7) ...
+Selecting previously unselected package krb5-locales.
+Preparing to unpack .../01-krb5-locales_1.21.3-5+deb13u1_all.deb ...
+Unpacking krb5-locales (1.21.3-5+deb13u1) ...
+Selecting previously unselected package libbrotli1:amd64.
+Preparing to unpack .../02-libbrotli1_1.1.0-2+deb13u1_amd64.deb ...
+Unpacking libbrotli1:amd64 (1.1.0-2+deb13u1) ...
+Selecting previously unselected package libkrb5support0:amd64.
+Preparing to unpack .../03-libkrb5support0_1.21.3-5+deb13u1_amd64.deb ...
+Unpacking libkrb5support0:amd64 (1.21.3-5+deb13u1) ...
+Selecting previously unselected package libcom-err2:amd64.
+Preparing to unpack .../04-libcom-err2_1.47.2-3+b12_amd64.deb ...
+Unpacking libcom-err2:amd64 (1.47.2-3+b12) ...
+Selecting previously unselected package libk5crypto3:amd64.
+Preparing to unpack .../05-libk5crypto3_1.21.3-5+deb13u1_amd64.deb ...
+Unpacking libk5crypto3:amd64 (1.21.3-5+deb13u1) ...
+Selecting previously unselected package libkeyutils1:amd64.
+Preparing to unpack .../06-libkeyutils1_1.6.3-6_amd64.deb ...
+Unpacking libkeyutils1:amd64 (1.6.3-6) ...
+Selecting previously unselected package libkrb5-3:amd64.
+Preparing to unpack .../07-libkrb5-3_1.21.3-5+deb13u1_amd64.deb ...
+Unpacking libkrb5-3:amd64 (1.21.3-5+deb13u1) ...
+Selecting previously unselected package libgssapi-krb5-2:amd64.
+Preparing to unpack .../08-libgssapi-krb5-2_1.21.3-5+deb13u1_amd64.deb ...
+Unpacking libgssapi-krb5-2:amd64 (1.21.3-5+deb13u1) ...
+Selecting previously unselected package libunistring5:amd64.
+Preparing to unpack .../09-libunistring5_1.3-2_amd64.deb ...
+Unpacking libunistring5:amd64 (1.3-2) ...
+Selecting previously unselected package libidn2-0:amd64.
+Preparing to unpack .../10-libidn2-0_2.3.8-2_amd64.deb ...
+Unpacking libidn2-0:amd64 (2.3.8-2) ...
+Selecting previously unselected package libsasl2-modules-db:amd64.
+Preparing to unpack .../11-libsasl2-modules-db_2.1.28+dfsg1-9_amd64.deb ...
+Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+Selecting previously unselected package libsasl2-2:amd64.
+Preparing to unpack .../12-libsasl2-2_2.1.28+dfsg1-9_amd64.deb ...
+Unpacking libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+Selecting previously unselected package libldap2:amd64.
+Preparing to unpack .../13-libldap2_2.6.10+dfsg-1_amd64.deb ...
+Unpacking libldap2:amd64 (2.6.10+dfsg-1) ...
+Selecting previously unselected package libnghttp2-14:amd64.
+Preparing to unpack .../14-libnghttp2-14_1.64.0-1.1+deb13u1_amd64.deb ...
+Unpacking libnghttp2-14:amd64 (1.64.0-1.1+deb13u1) ...
+Selecting previously unselected package libnghttp3-9:amd64.
+Preparing to unpack .../15-libnghttp3-9_1.8.0-1_amd64.deb ...
+Unpacking libnghttp3-9:amd64 (1.8.0-1) ...
+Selecting previously unselected package libpsl5t64:amd64.
+Preparing to unpack .../16-libpsl5t64_0.21.2-1.1+b1_amd64.deb ...
+Unpacking libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+Selecting previously unselected package libp11-kit0:amd64.
+Preparing to unpack .../17-libp11-kit0_0.25.5-3_amd64.deb ...
+Unpacking libp11-kit0:amd64 (0.25.5-3) ...
+Selecting previously unselected package libtasn1-6:amd64.
+Preparing to unpack .../18-libtasn1-6_4.20.0-2+deb13u1_amd64.deb ...
+Unpacking libtasn1-6:amd64 (4.20.0-2+deb13u1) ...
+Selecting previously unselected package libgnutls30t64:amd64.
+Preparing to unpack .../19-libgnutls30t64_3.8.9-3+deb13u4_amd64.deb ...
+Unpacking libgnutls30t64:amd64 (3.8.9-3+deb13u4) ...
+Selecting previously unselected package librtmp1:amd64.
+Preparing to unpack .../20-librtmp1_2.4+20151223.gitfa8646d.1-2+b5_amd64.deb ...
+Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+Selecting previously unselected package libssh2-1t64:amd64.
+Preparing to unpack .../21-libssh2-1t64_1.11.1-1+deb13u2_amd64.deb ...
+Unpacking libssh2-1t64:amd64 (1.11.1-1+deb13u2) ...
+Selecting previously unselected package libcurl4t64:amd64.
+Preparing to unpack .../22-libcurl4t64_8.14.1-2+deb13u7_amd64.deb ...
+Unpacking libcurl4t64:amd64 (8.14.1-2+deb13u7) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../23-curl_8.14.1-2+deb13u7_amd64.deb ...
+Unpacking curl (8.14.1-2+deb13u7) ...
+Selecting previously unselected package libldap-common.
+Preparing to unpack .../24-libldap-common_2.6.10+dfsg-1_all.deb ...
+Unpacking libldap-common (2.6.10+dfsg-1) ...
+Selecting previously unselected package libsasl2-modules:amd64.
+Preparing to unpack .../25-libsasl2-modules_2.1.28+dfsg1-9_amd64.deb ...
+Unpacking libsasl2-modules:amd64 (2.1.28+dfsg1-9) ...
+Selecting previously unselected package publicsuffix.
+Preparing to unpack .../26-publicsuffix_20250328.1952-0.1_all.deb ...
+Unpacking publicsuffix (20250328.1952-0.1) ...
+Setting up libkeyutils1:amd64 (1.6.3-6) ...
+Setting up libbrotli1:amd64 (1.1.0-2+deb13u1) ...
+Setting up libsasl2-modules:amd64 (2.1.28+dfsg1-9) ...
+Setting up libnghttp2-14:amd64 (1.64.0-1.1+deb13u1) ...
+Setting up krb5-locales (1.21.3-5+deb13u1) ...
+Setting up libcom-err2:amd64 (1.47.2-3+b12) ...
+Setting up libldap-common (2.6.10+dfsg-1) ...
+Setting up libkrb5support0:amd64 (1.21.3-5+deb13u1) ...
+Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+Setting up bash-completion (1:2.16.0-7) ...
+Setting up libp11-kit0:amd64 (0.25.5-3) ...
+Setting up libunistring5:amd64 (1.3-2) ...
+Setting up libk5crypto3:amd64 (1.21.3-5+deb13u1) ...
+Setting up libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+Setting up libnghttp3-9:amd64 (1.8.0-1) ...
+Setting up libtasn1-6:amd64 (4.20.0-2+deb13u1) ...
+Setting up libkrb5-3:amd64 (1.21.3-5+deb13u1) ...
+Setting up libssh2-1t64:amd64 (1.11.1-1+deb13u2) ...
+Setting up publicsuffix (20250328.1952-0.1) ...
+Setting up libldap2:amd64 (2.6.10+dfsg-1) ...
+Setting up libidn2-0:amd64 (2.3.8-2) ...
+Setting up libgssapi-krb5-2:amd64 (1.21.3-5+deb13u1) ...
+Setting up libgnutls30t64:amd64 (3.8.9-3+deb13u4) ...
+Setting up libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+Setting up libcurl4t64:amd64 (8.14.1-2+deb13u7) ...
+Setting up curl (8.14.1-2+deb13u7) ...
+Processing triggers for libc-bin (2.41-12+deb13u4) ...
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 6 packages in 8ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 53 items
+
+../tests/test_state.py FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 92%]
+FFFF                                                                     [100%]
+
+=================================== FAILURES ===================================
+__________ TestPlantedCliArguments.test_accepts_exactly_one_argument ___________
+
+self = <test_state.TestPlantedCliArguments object at 0x7764cbfabad0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_accepts_exactly_one_argum0')
+
+    def test_accepts_exactly_one_argument(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "c1,2024-05-01T09:00:00+00:00,10.00,VALID",
+            "c2,2024-05-01T09:05:00+00:00,3.00,FAILED",
+        ])
+>       assert_summary(run(path), "10.00", 1, 1)
+
+/tests/test_state.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cbfb6c90>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+______________ TestPlantedCliArguments.test_rejects_two_arguments ______________
+
+self = <test_state.TestPlantedCliArguments object at 0x7764cb6a5a00>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_rejects_two_arguments0')
+
+    def test_rejects_two_arguments(self, tmp_path):
+        path = write_csv(tmp_path, ["c1,2024-05-01T09:00:00+00:00,10.00,VALID"])
+>       assert_rejected(run(path, path))
+
+/tests/test_state.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_rejects_two_ar.../input.csv', '/tmp/pytest-of-root/pytest-0/test_rejects_two_arguments0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_rejects_two_ar.../input.csv', '/tmp/pytest-of-root/pytest-0/test_rejects_two_arguments0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+______________ TestPlantedCliArguments.test_rejects_no_arguments _______________
+
+self = <test_state.TestPlantedCliArguments object at 0x7764cb6a40e0>
+
+    def test_rejects_no_arguments(self):
+>       assert_rejected(run())
+
+/tests/test_state.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+__________ TestPlantedStatusFilter.test_pending_counts_toward_nothing __________
+
+self = <test_state.TestPlantedStatusFilter object at 0x7764cb5a8170>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_pending_counts_toward_not0')
+
+    def test_pending_counts_toward_nothing(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "s1,2024-05-01T09:00:00+00:00,10.00,VALID",
+            "s2,2024-05-01T09:01:00+00:00,3.00,FAILED",
+            "s3,2024-05-01T09:02:00+00:00,5.00,PENDING",
+            "s4,2024-05-01T09:03:00+00:00,2.50,VALID",
+        ])
+>       assert_summary(run(path), "12.50", 2, 1)
+
+/tests/test_state.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb861eb0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+__ TestPlantedStatusFilter.test_pending_status_is_case_and_space_insensitive ___
+
+self = <test_state.TestPlantedStatusFilter object at 0x7764cb5a8470>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_pending_status_is_case_an0')
+
+    def test_pending_status_is_case_and_space_insensitive(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "s1,2024-05-01T09:00:00+00:00,1.00,VALID",
+            "s2,2024-05-01T09:01:00+00:00,4.00, pending ",
+            "s3,2024-05-01T09:02:00+00:00,6.00,Pending",
+        ])
+>       assert_summary(run(path), "1.00", 1, 0)
+
+/tests/test_state.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb5b3350>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+________________ TestPlantedStatusFilter.test_only_pending_rows ________________
+
+self = <test_state.TestPlantedStatusFilter object at 0x7764cb5aaa80>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_only_pending_rows0')
+
+    def test_only_pending_rows(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "s1,2024-05-01T09:00:00+00:00,7.00,PENDING",
+            "s2,2024-05-01T09:01:00+00:00,8.00,PENDING",
+        ])
+        result = run(path)
+>       assert_summary(result, "0", 0, 0)
+
+/tests/test_state.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb5b32f0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+_ TestPlantedStatusFilter.test_latest_pending_record_supersedes_valid_and_failed _
+
+self = <test_state.TestPlantedStatusFilter object at 0x7764cb5aa840>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_latest_pending_record_sup0')
+
+    def test_latest_pending_record_supersedes_valid_and_failed(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "s1,2024-05-01T09:00:00+00:00,9.00,VALID",
+            "s1,2024-05-01T10:00:00+00:00,9.00,PENDING",
+            "s2,2024-05-01T09:00:00+00:00,4.00,FAILED",
+            "s2,2024-05-01T10:00:00+00:00,4.00,PENDING",
+            "s3,2024-05-01T09:00:00+00:00,1.25,VALID",
+        ])
+>       assert_summary(run(path), "1.25", 1, 0)
+
+/tests/test_state.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb63a930>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+____ TestPlantedTimestampOrder.test_later_instant_with_smaller_string_wins _____
+
+self = <test_state.TestPlantedTimestampOrder object at 0x7764cb5aaa50>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_later_instant_with_smalle0')
+
+    def test_later_instant_with_smaller_string_wins(self, tmp_path):
+        # 07:30-01:00 is 08:30Z, later than 08:00Z despite sorting first as text.
+        path = write_csv(tmp_path, [
+            "t1,2024-03-10T08:00:00+00:00,50.00,VALID",
+            "t1,2024-03-10T07:30:00-01:00,50.00,FAILED",
+        ])
+>       assert_summary(run(path), "0", 0, 1)
+
+/tests/test_state.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb5b2d80>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+___ TestPlantedTimestampOrder.test_earlier_instant_with_larger_string_loses ____
+
+self = <test_state.TestPlantedTimestampOrder object at 0x7764cb5ab230>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_earlier_instant_with_larg0')
+
+    def test_earlier_instant_with_larger_string_loses(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "t1,2024-03-10T07:30:00-01:00,50.00,FAILED",
+            "t1,2024-03-10T08:00:00+00:00,50.00,VALID",
+        ])
+>       assert_summary(run(path), "0", 0, 1)
+
+/tests/test_state.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb5b37d0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+________ TestPlantedTimestampOrder.test_offsets_across_a_date_boundary _________
+
+self = <test_state.TestPlantedTimestampOrder object at 0x7764cb5ab3e0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_offsets_across_a_date_bou0')
+
+    def test_offsets_across_a_date_boundary(self, tmp_path):
+        # 2024-03-10T23:30-05:00 is 2024-03-11T04:30Z, later than 01:00Z.
+        path = write_csv(tmp_path, [
+            "t1,2024-03-10T23:30:00-05:00,20.00,VALID",
+            "t1,2024-03-11T01:00:00+00:00,20.00,FAILED",
+        ])
+>       assert_summary(run(path), "20.00", 1, 0)
+
+/tests/test_state.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb638fb0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+_____ TestPlantedTimestampOrder.test_z_suffix_compared_with_numeric_offset _____
+
+self = <test_state.TestPlantedTimestampOrder object at 0x7764cb5ab5c0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_z_suffix_compared_with_nu0')
+
+    def test_z_suffix_compared_with_numeric_offset(self, tmp_path):
+        # 13:30+02:00 is 11:30Z, earlier than 12:00Z.
+        path = write_csv(tmp_path, [
+            "t1,2024-03-10T12:00:00Z,15.00,VALID",
+            "t1,2024-03-10T13:30:00+02:00,15.00,FAILED",
+        ])
+>       assert_summary(run(path), "15.00", 1, 0)
+
+/tests/test_state.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb6383e0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+__ TestPlantedTimestampOrder.test_same_instant_different_offsets_keeps_first ___
+
+self = <test_state.TestPlantedTimestampOrder object at 0x7764cb5ab8f0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_same_instant_different_of0')
+
+    def test_same_instant_different_offsets_keeps_first(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "t1,2024-03-10T08:00:00+00:00,5.00,VALID",
+            "t1,2024-03-10T10:00:00+02:00,5.00,FAILED",
+        ])
+>       assert_summary(run(path), "5.00", 1, 0)
+
+/tests/test_state.py:183: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb5b0f20>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+_________________ TestPlantedTimestampOrder.test_mixed_dataset _________________
+
+self = <test_state.TestPlantedTimestampOrder object at 0x7764cb5abc80>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_mixed_dataset0')
+
+    def test_mixed_dataset(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "m1,2024-06-01T10:00:00+00:00,100.00,VALID",
+            "m1,2024-06-01T09:00:00-02:00,100.00,FAILED",   # 11:00Z, wins
+            "m2,2024-06-01T18:00:00+05:30,40.00,FAILED",    # 12:30Z
+            "m2,2024-06-01T12:45:00Z,40.00,VALID",           # 12:45Z, wins
+            "m3,2024-06-01T08:00:00-04:00,7.25,VALID",       # 12:00Z, wins
+            "m3,2024-06-01T11:00:00+00:00,7.25,FAILED",
+            "m4,2024-06-01T09:00:00+00:00,3.10,VALID",
+        ])
+>       assert_summary(run(path), "50.35", 3, 1)
+
+/tests/test_state.py:195: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb63b8c0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+_ TestRobustnessTiesAndRounding.test_identical_timestamps_keep_first_record[VALID-FAILED-expected0] _
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5abec0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_identical_timestamps_keep0')
+first = 'VALID', second = 'FAILED', expected = ('8.00', 1, 0)
+
+    @pytest.mark.parametrize("first, second, expected", [
+        ("VALID", "FAILED", ("8.00", 1, 0)),
+        ("FAILED", "VALID", ("0", 0, 1)),
+    ])
+    def test_identical_timestamps_keep_first_record(self, tmp_path, first, second, expected):
+        path = write_csv(tmp_path, [
+            f"r1,2024-07-01T12:00:00+00:00,8.00,{first}",
+            f"r1,2024-07-01T12:00:00+00:00,8.00,{second}",
+        ])
+>       assert_summary(run(path), *expected)
+
+/tests/test_state.py:211: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb77b080>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+_ TestRobustnessTiesAndRounding.test_identical_timestamps_keep_first_record[FAILED-VALID-expected1] _
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5aba70>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_identical_timestamps_keep1')
+first = 'FAILED', second = 'VALID', expected = ('0', 0, 1)
+
+    @pytest.mark.parametrize("first, second, expected", [
+        ("VALID", "FAILED", ("8.00", 1, 0)),
+        ("FAILED", "VALID", ("0", 0, 1)),
+    ])
+    def test_identical_timestamps_keep_first_record(self, tmp_path, first, second, expected):
+        path = write_csv(tmp_path, [
+            f"r1,2024-07-01T12:00:00+00:00,8.00,{first}",
+            f"r1,2024-07-01T12:00:00+00:00,8.00,{second}",
+        ])
+>       assert_summary(run(path), *expected)
+
+/tests/test_state.py:211: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb8082f0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+___ TestRobustnessTiesAndRounding.test_round_half_up_to_cents[amounts0-0.13] ___
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb6a6600>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_round_half_up_to_cents_am0')
+amounts = ['0.125'], expected = '0.13'
+
+    @pytest.mark.parametrize("amounts, expected", [
+        (["0.125"], "0.13"),
+        (["2.675"], "2.68"),
+        (["1.005", "1.005"], "2.01"),
+        (["0.1", "0.2"], "0.30"),
+        (["-1.125"], "-1.13"),
+        (["10"], "10.00"),
+    ])
+    def test_round_half_up_to_cents(self, tmp_path, amounts, expected):
+        rows = [f"a{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+>       assert_summary(run(write_csv(tmp_path, rows)), expected, len(amounts), 0)
+
+/tests/test_state.py:223: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb63ac30>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+___ TestRobustnessTiesAndRounding.test_round_half_up_to_cents[amounts1-2.68] ___
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5ae3c0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_round_half_up_to_cents_am1')
+amounts = ['2.675'], expected = '2.68'
+
+    @pytest.mark.parametrize("amounts, expected", [
+        (["0.125"], "0.13"),
+        (["2.675"], "2.68"),
+        (["1.005", "1.005"], "2.01"),
+        (["0.1", "0.2"], "0.30"),
+        (["-1.125"], "-1.13"),
+        (["10"], "10.00"),
+    ])
+    def test_round_half_up_to_cents(self, tmp_path, amounts, expected):
+        rows = [f"a{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+>       assert_summary(run(write_csv(tmp_path, rows)), expected, len(amounts), 0)
+
+/tests/test_state.py:223: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb57cb90>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+___ TestRobustnessTiesAndRounding.test_round_half_up_to_cents[amounts2-2.01] ___
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5af7a0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_round_half_up_to_cents_am2')
+amounts = ['1.005', '1.005'], expected = '2.01'
+
+    @pytest.mark.parametrize("amounts, expected", [
+        (["0.125"], "0.13"),
+        (["2.675"], "2.68"),
+        (["1.005", "1.005"], "2.01"),
+        (["0.1", "0.2"], "0.30"),
+        (["-1.125"], "-1.13"),
+        (["10"], "10.00"),
+    ])
+    def test_round_half_up_to_cents(self, tmp_path, amounts, expected):
+        rows = [f"a{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+>       assert_summary(run(write_csv(tmp_path, rows)), expected, len(amounts), 0)
+
+/tests/test_state.py:223: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb57c0e0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+___ TestRobustnessTiesAndRounding.test_round_half_up_to_cents[amounts3-0.30] ___
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5afda0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_round_half_up_to_cents_am3')
+amounts = ['0.1', '0.2'], expected = '0.30'
+
+    @pytest.mark.parametrize("amounts, expected", [
+        (["0.125"], "0.13"),
+        (["2.675"], "2.68"),
+        (["1.005", "1.005"], "2.01"),
+        (["0.1", "0.2"], "0.30"),
+        (["-1.125"], "-1.13"),
+        (["10"], "10.00"),
+    ])
+    def test_round_half_up_to_cents(self, tmp_path, amounts, expected):
+        rows = [f"a{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+>       assert_summary(run(write_csv(tmp_path, rows)), expected, len(amounts), 0)
+
+/tests/test_state.py:223: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb57ef30>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+__ TestRobustnessTiesAndRounding.test_round_half_up_to_cents[amounts4--1.13] ___
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5ac0e0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_round_half_up_to_cents_am4')
+amounts = ['-1.125'], expected = '-1.13'
+
+    @pytest.mark.parametrize("amounts, expected", [
+        (["0.125"], "0.13"),
+        (["2.675"], "2.68"),
+        (["1.005", "1.005"], "2.01"),
+        (["0.1", "0.2"], "0.30"),
+        (["-1.125"], "-1.13"),
+        (["10"], "10.00"),
+    ])
+    def test_round_half_up_to_cents(self, tmp_path, amounts, expected):
+        rows = [f"a{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+>       assert_summary(run(write_csv(tmp_path, rows)), expected, len(amounts), 0)
+
+/tests/test_state.py:223: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb57e030>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+__ TestRobustnessTiesAndRounding.test_round_half_up_to_cents[amounts5-10.00] ___
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5ac200>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_round_half_up_to_cents_am5')
+amounts = ['10'], expected = '10.00'
+
+    @pytest.mark.parametrize("amounts, expected", [
+        (["0.125"], "0.13"),
+        (["2.675"], "2.68"),
+        (["1.005", "1.005"], "2.01"),
+        (["0.1", "0.2"], "0.30"),
+        (["-1.125"], "-1.13"),
+        (["10"], "10.00"),
+    ])
+    def test_round_half_up_to_cents(self, tmp_path, amounts, expected):
+        rows = [f"a{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+>       assert_summary(run(write_csv(tmp_path, rows)), expected, len(amounts), 0)
+
+/tests/test_state.py:223: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb860830>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+_ TestRobustnessTiesAndRounding.test_large_totals_keep_decimal_precision[amounts0-98765432109876543.22] _
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5ac4a0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_large_totals_keep_decimal0')
+amounts = ['98765432109876543.21', '0.01'], expected = '98765432109876543.22'
+
+    @pytest.mark.parametrize("amounts, expected", [
+        (["98765432109876543.21", "0.01"], "98765432109876543.22"),
+        (["12345678901234567890.125"], "12345678901234567890.13"),
+    ])
+    def test_large_totals_keep_decimal_precision(self, tmp_path, amounts, expected):
+        rows = [f"b{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+>       assert_summary(run(write_csv(tmp_path, rows)), expected, len(amounts), 0)
+
+/tests/test_state.py:231: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb808170>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+_ TestRobustnessTiesAndRounding.test_large_totals_keep_decimal_precision[amounts1-12345678901234567890.13] _
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5ac620>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_large_totals_keep_decimal1')
+amounts = ['12345678901234567890.125'], expected = '12345678901234567890.13'
+
+    @pytest.mark.parametrize("amounts, expected", [
+        (["98765432109876543.21", "0.01"], "98765432109876543.22"),
+        (["12345678901234567890.125"], "12345678901234567890.13"),
+    ])
+    def test_large_totals_keep_decimal_precision(self, tmp_path, amounts, expected):
+        rows = [f"b{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+>       assert_summary(run(write_csv(tmp_path, rows)), expected, len(amounts), 0)
+
+/tests/test_state.py:231: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb46c3b0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+___ TestRobustnessTiesAndRounding.test_negative_zero_is_normalised[amounts0] ___
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5ac9b0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_negative_zero_is_normalis0')
+amounts = ['-0.004']
+
+    @pytest.mark.parametrize("amounts", [["-0.004"], ["0.004", "-0.006"], ["-0.00"]])
+    def test_negative_zero_is_normalised(self, tmp_path, amounts):
+        rows = [f"z{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+        result = run(write_csv(tmp_path, rows))
+>       assert_summary(result, "0", len(amounts), 0)
+
+/tests/test_state.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb6a5df0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+___ TestRobustnessTiesAndRounding.test_negative_zero_is_normalised[amounts1] ___
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5acb00>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_negative_zero_is_normalis1')
+amounts = ['0.004', '-0.006']
+
+    @pytest.mark.parametrize("amounts", [["-0.004"], ["0.004", "-0.006"], ["-0.00"]])
+    def test_negative_zero_is_normalised(self, tmp_path, amounts):
+        rows = [f"z{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+        result = run(write_csv(tmp_path, rows))
+>       assert_summary(result, "0", len(amounts), 0)
+
+/tests/test_state.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb57fda0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+___ TestRobustnessTiesAndRounding.test_negative_zero_is_normalised[amounts2] ___
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5acda0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_negative_zero_is_normalis2')
+amounts = ['-0.00']
+
+    @pytest.mark.parametrize("amounts", [["-0.004"], ["0.004", "-0.006"], ["-0.00"]])
+    def test_negative_zero_is_normalised(self, tmp_path, amounts):
+        rows = [f"z{i},2024-07-01T12:00:00+00:00,{amount},VALID" for i, amount in enumerate(amounts)]
+        result = run(write_csv(tmp_path, rows))
+>       assert_summary(result, "0", len(amounts), 0)
+
+/tests/test_state.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb807ef0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+_____________ TestRobustnessTiesAndRounding.test_header_only_file ______________
+
+self = <test_state.TestRobustnessTiesAndRounding object at 0x7764cb5acf50>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_header_only_file0')
+
+    def test_header_only_file(self, tmp_path):
+        result = run(write_csv(tmp_path, []))
+>       assert_summary(result, "0", 0, 0)
+
+/tests/test_state.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb638f20>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+___________ TestRobustnessAcceptedInput.test_utf8_bom_before_header ____________
+
+self = <test_state.TestRobustnessAcceptedInput object at 0x7764cb5ad220>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_utf8_bom_before_header0')
+
+    def test_utf8_bom_before_header(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "u1,2024-07-01T12:00:00+00:00,1.00,VALID",
+            "u2,2024-07-01T12:00:00+00:00,2.00,FAILED",
+        ], prefix="\ufeff")
+>       assert_summary(run(path), "1.00", 1, 1)
+
+/tests/test_state.py:252: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb802150>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+____ TestRobustnessAcceptedInput.test_valid_and_failed_status_normalisation ____
+
+self = <test_state.TestRobustnessAcceptedInput object at 0x7764cb5ad430>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_valid_and_failed_status_n0')
+
+    def test_valid_and_failed_status_normalisation(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "n1,2024-07-01T12:00:00+00:00,1.50, valid ",
+            "n2,2024-07-01T12:00:00+00:00,2.50,Valid",
+            "n3,2024-07-01T12:00:00+00:00,9.00,Failed",
+            "n4,2024-07-01T12:00:00+00:00,9.00,FAILED ",
+        ])
+>       assert_summary(run(path), "4.00", 2, 2)
+
+/tests/test_state.py:261: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_state.py:61: in assert_summary
+    got = parse_summary(result)
+          ^^^^^^^^^^^^^^^^^^^^^
+/tests/test_state.py:50: in parse_summary
+    data = json.loads(result.stdout, parse_float=Decimal, parse_constant=_reject_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/json/decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7764cb57e7b0>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/usr/local/lib/python3.12/json/decoder.py:356: JSONDecodeError
+_ TestRobustnessRejectedInput.test_invalid_or_offsetless_timestamp[2024-07-01T12:00:00] _
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5ad670>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim0')
+timestamp = '2024-07-01T12:00:00'
+
+    @pytest.mark.parametrize("timestamp", [
+        "2024-07-01T12:00:00", "2024-07-01", "not-a-date", "",
+    ])
+    def test_invalid_or_offsetless_timestamp(self, tmp_path, timestamp):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,{timestamp},1.00,VALID"])))
+
+/tests/test_state.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+_ TestRobustnessRejectedInput.test_invalid_or_offsetless_timestamp[2024-07-01] _
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5ad7f0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim1')
+timestamp = '2024-07-01'
+
+    @pytest.mark.parametrize("timestamp", [
+        "2024-07-01T12:00:00", "2024-07-01", "not-a-date", "",
+    ])
+    def test_invalid_or_offsetless_timestamp(self, tmp_path, timestamp):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,{timestamp},1.00,VALID"])))
+
+/tests/test_state.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim1/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim1/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+_ TestRobustnessRejectedInput.test_invalid_or_offsetless_timestamp[not-a-date] _
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5ad8b0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim2')
+timestamp = 'not-a-date'
+
+    @pytest.mark.parametrize("timestamp", [
+        "2024-07-01T12:00:00", "2024-07-01", "not-a-date", "",
+    ])
+    def test_invalid_or_offsetless_timestamp(self, tmp_path, timestamp):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,{timestamp},1.00,VALID"])))
+
+/tests/test_state.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim2/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim2/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+______ TestRobustnessRejectedInput.test_invalid_or_offsetless_timestamp[] ______
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5ad970>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim3')
+timestamp = ''
+
+    @pytest.mark.parametrize("timestamp", [
+        "2024-07-01T12:00:00", "2024-07-01", "not-a-date", "",
+    ])
+    def test_invalid_or_offsetless_timestamp(self, tmp_path, timestamp):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,{timestamp},1.00,VALID"])))
+
+/tests/test_state.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim3/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_or_offsetless_tim3/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+____ TestRobustnessRejectedInput.test_offsetless_timestamp_on_non_valid_row ____
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5adb50>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_offsetless_timestamp_on_n0')
+
+    def test_offsetless_timestamp_on_non_valid_row(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "x1,2024-07-01T12:00:00+00:00,1.00,VALID",
+            "x2,2024-07-01T12:00:00,1.00,FAILED",
+        ])
+>       assert_rejected(run(path))
+
+/tests/test_state.py:276: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_offsetless_timestamp_on_n0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_offsetless_timestamp_on_n0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+___ TestRobustnessRejectedInput.test_offsetless_timestamp_on_superseded_row ____
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5ade50>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_offsetless_timestamp_on_s0')
+
+    def test_offsetless_timestamp_on_superseded_row(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "x1,2024-07-01T11:00:00,1.00,VALID",
+            "x1,2024-07-01T12:00:00+00:00,1.00,VALID",
+        ])
+>       assert_rejected(run(path))
+
+/tests/test_state.py:283: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_offsetless_timestamp_on_s0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_offsetless_timestamp_on_s0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+_____ TestRobustnessRejectedInput.test_unknown_or_empty_status[CANCELLED] ______
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5aef90>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status_C0')
+status = 'CANCELLED'
+
+    @pytest.mark.parametrize("status", ["CANCELLED", "refunded", "", "   "])
+    def test_unknown_or_empty_status(self, tmp_path, status):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,2024-07-01T12:00:00+00:00,1.00,{status}"])))
+
+/tests/test_state.py:287: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status_C0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status_C0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+______ TestRobustnessRejectedInput.test_unknown_or_empty_status[refunded] ______
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5af1d0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status_r0')
+status = 'refunded'
+
+    @pytest.mark.parametrize("status", ["CANCELLED", "refunded", "", "   "])
+    def test_unknown_or_empty_status(self, tmp_path, status):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,2024-07-01T12:00:00+00:00,1.00,{status}"])))
+
+/tests/test_state.py:287: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status_r0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status_r0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+__________ TestRobustnessRejectedInput.test_unknown_or_empty_status[] __________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5af290>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status__0')
+status = ''
+
+    @pytest.mark.parametrize("status", ["CANCELLED", "refunded", "", "   "])
+    def test_unknown_or_empty_status(self, tmp_path, status):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,2024-07-01T12:00:00+00:00,1.00,{status}"])))
+
+/tests/test_state.py:287: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status__0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status__0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+________ TestRobustnessRejectedInput.test_unknown_or_empty_status[   ] _________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5aa660>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status__1')
+status = '   '
+
+    @pytest.mark.parametrize("status", ["CANCELLED", "refunded", "", "   "])
+    def test_unknown_or_empty_status(self, tmp_path, status):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,2024-07-01T12:00:00+00:00,1.00,{status}"])))
+
+/tests/test_state.py:287: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status__1/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_or_empty_status__1/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+______ TestRobustnessRejectedInput.test_unknown_status_on_superseded_row _______
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5adac0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_unknown_status_on_superse0')
+
+    def test_unknown_status_on_superseded_row(self, tmp_path):
+        path = write_csv(tmp_path, [
+            "x1,2024-07-01T11:00:00+00:00,1.00,REVERSED",
+            "x1,2024-07-01T12:00:00+00:00,1.00,VALID",
+        ])
+>       assert_rejected(run(path))
+
+/tests/test_state.py:294: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_status_on_superse0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_unknown_status_on_superse0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+_ TestRobustnessRejectedInput.test_short_or_overlong_row[x1,2024-07-01T12:00:00+00:00] _
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5ace60>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_0')
+row = 'x1,2024-07-01T12:00:00+00:00'
+
+    @pytest.mark.parametrize("row", [
+        "x1,2024-07-01T12:00:00+00:00",
+        "x1,2024-07-01T12:00:00+00:00,1.00",
+        "x1",
+        "x1,2024-07-01T12:00:00+00:00,1.00,VALID,extra",
+    ])
+    def test_short_or_overlong_row(self, tmp_path, row):
+        path = write_csv(tmp_path, ["ok,2024-07-01T12:00:00+00:00,1.00,VALID", row])
+>       assert_rejected(run(path))
+
+/tests/test_state.py:304: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+_ TestRobustnessRejectedInput.test_short_or_overlong_row[x1,2024-07-01T12:00:00+00:00,1.00] _
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5af4a0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_1')
+row = 'x1,2024-07-01T12:00:00+00:00,1.00'
+
+    @pytest.mark.parametrize("row", [
+        "x1,2024-07-01T12:00:00+00:00",
+        "x1,2024-07-01T12:00:00+00:00,1.00",
+        "x1",
+        "x1,2024-07-01T12:00:00+00:00,1.00,VALID,extra",
+    ])
+    def test_short_or_overlong_row(self, tmp_path, row):
+        path = write_csv(tmp_path, ["ok,2024-07-01T12:00:00+00:00,1.00,VALID", row])
+>       assert_rejected(run(path))
+
+/tests/test_state.py:304: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_1/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_1/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+__________ TestRobustnessRejectedInput.test_short_or_overlong_row[x1] __________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5af560>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_2')
+row = 'x1'
+
+    @pytest.mark.parametrize("row", [
+        "x1,2024-07-01T12:00:00+00:00",
+        "x1,2024-07-01T12:00:00+00:00,1.00",
+        "x1",
+        "x1,2024-07-01T12:00:00+00:00,1.00,VALID,extra",
+    ])
+    def test_short_or_overlong_row(self, tmp_path, row):
+        path = write_csv(tmp_path, ["ok,2024-07-01T12:00:00+00:00,1.00,VALID", row])
+>       assert_rejected(run(path))
+
+/tests/test_state.py:304: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_2/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_2/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+_ TestRobustnessRejectedInput.test_short_or_overlong_row[x1,2024-07-01T12:00:00+00:00,1.00,VALID,extra] _
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5af620>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_3')
+row = 'x1,2024-07-01T12:00:00+00:00,1.00,VALID,extra'
+
+    @pytest.mark.parametrize("row", [
+        "x1,2024-07-01T12:00:00+00:00",
+        "x1,2024-07-01T12:00:00+00:00,1.00",
+        "x1",
+        "x1,2024-07-01T12:00:00+00:00,1.00,VALID,extra",
+    ])
+    def test_short_or_overlong_row(self, tmp_path, row):
+        path = write_csv(tmp_path, ["ok,2024-07-01T12:00:00+00:00,1.00,VALID", row])
+>       assert_rejected(run(path))
+
+/tests/test_state.py:304: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_3/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_short_or_overlong_row_x1_3/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+_____________ TestRobustnessRejectedInput.test_invalid_amount[abc] _____________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5af980>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_invalid_amount_abc_0')
+amount = 'abc'
+
+    @pytest.mark.parametrize("amount", ["abc", "", "NaN", "Infinity", "-inf"])
+    def test_invalid_amount(self, tmp_path, amount):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,2024-07-01T12:00:00+00:00,{amount},VALID"])))
+
+/tests/test_state.py:308: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount_abc_0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount_abc_0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+______________ TestRobustnessRejectedInput.test_invalid_amount[] _______________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5afcb0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_invalid_amount__0')
+amount = ''
+
+    @pytest.mark.parametrize("amount", ["abc", "", "NaN", "Infinity", "-inf"])
+    def test_invalid_amount(self, tmp_path, amount):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,2024-07-01T12:00:00+00:00,{amount},VALID"])))
+
+/tests/test_state.py:308: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount__0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount__0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+_____________ TestRobustnessRejectedInput.test_invalid_amount[NaN] _____________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5afdd0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_invalid_amount_NaN_0')
+amount = 'NaN'
+
+    @pytest.mark.parametrize("amount", ["abc", "", "NaN", "Infinity", "-inf"])
+    def test_invalid_amount(self, tmp_path, amount):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,2024-07-01T12:00:00+00:00,{amount},VALID"])))
+
+/tests/test_state.py:308: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount_NaN_0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount_NaN_0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+__________ TestRobustnessRejectedInput.test_invalid_amount[Infinity] ___________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5afec0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_invalid_amount_Infinity_0')
+amount = 'Infinity'
+
+    @pytest.mark.parametrize("amount", ["abc", "", "NaN", "Infinity", "-inf"])
+    def test_invalid_amount(self, tmp_path, amount):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,2024-07-01T12:00:00+00:00,{amount},VALID"])))
+
+/tests/test_state.py:308: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount_Infinity_0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount_Infinity_0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+____________ TestRobustnessRejectedInput.test_invalid_amount[-inf] _____________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5aff80>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_invalid_amount__inf_0')
+amount = '-inf'
+
+    @pytest.mark.parametrize("amount", ["abc", "", "NaN", "Infinity", "-inf"])
+    def test_invalid_amount(self, tmp_path, amount):
+>       assert_rejected(run(write_csv(tmp_path, [f"x1,2024-07-01T12:00:00+00:00,{amount},VALID"])))
+
+/tests/test_state.py:308: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount__inf_0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_invalid_amount__inf_0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+___________ TestRobustnessRejectedInput.test_empty_transaction_id[] ____________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb860b60>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_empty_transaction_id__0')
+tx_id = ''
+
+    @pytest.mark.parametrize("tx_id", ["", "   "])
+    def test_empty_transaction_id(self, tmp_path, tx_id):
+>       assert_rejected(run(write_csv(tmp_path, [f"{tx_id},2024-07-01T12:00:00+00:00,1.00,VALID"])))
+
+/tests/test_state.py:312: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_empty_transaction_id__0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_empty_transaction_id__0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+__________ TestRobustnessRejectedInput.test_empty_transaction_id[   ] __________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb860680>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_empty_transaction_id_____0')
+tx_id = '   '
+
+    @pytest.mark.parametrize("tx_id", ["", "   "])
+    def test_empty_transaction_id(self, tmp_path, tx_id):
+>       assert_rejected(run(write_csv(tmp_path, [f"{tx_id},2024-07-01T12:00:00+00:00,1.00,VALID"])))
+
+/tests/test_state.py:312: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_empty_transaction_id_____0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_empty_transaction_id_____0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+___________ TestRobustnessRejectedInput.test_missing_required_column ___________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5a4a40>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_missing_required_column0')
+
+    def test_missing_required_column(self, tmp_path):
+        path = write_csv(tmp_path, ["x1,2024-07-01T12:00:00+00:00,1.00"],
+                         header="tx_id,timestamp,amount")
+>       assert_rejected(run(path))
+
+/tests/test_state.py:317: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_missing_required_column0/input.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_missing_required_column0/input.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+_____________ TestRobustnessRejectedInput.test_missing_input_file ______________
+
+self = <test_state.TestRobustnessRejectedInput object at 0x7764cb5a57f0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_missing_input_file0')
+
+    def test_missing_input_file(self, tmp_path):
+>       assert_rejected(run(tmp_path / "does-not-exist.csv"))
+
+/tests/test_state.py:320: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_missing_input_file0/does-not-exist.csv'], returncode=0, stdout='', stderr='')
+
+    def assert_rejected(result):
+>       assert result.returncode > 0, (
+            f"expected non-zero exit, got {result.returncode}; stdout: {result.stdout!r}"
+        )
+E       AssertionError: expected non-zero exit, got 0; stdout: ''
+E       assert 0 > 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/pytest-of-root/pytest-0/test_missing_input_file0/does-not-exist.csv'], returncode=0, stdout='', stderr='').returncode
+
+/tests/test_state.py:74: AssertionError
+=========================== short test summary info ============================
+FAILED ../tests/test_state.py::TestPlantedCliArguments::test_accepts_exactly_one_argument
+FAILED ../tests/test_state.py::TestPlantedCliArguments::test_rejects_two_arguments
+FAILED ../tests/test_state.py::TestPlantedCliArguments::test_rejects_no_arguments
+FAILED ../tests/test_state.py::TestPlantedStatusFilter::test_pending_counts_toward_nothing
+FAILED ../tests/test_state.py::TestPlantedStatusFilter::test_pending_status_is_case_and_space_insensitive
+FAILED ../tests/test_state.py::TestPlantedStatusFilter::test_only_pending_rows
+FAILED ../tests/test_state.py::TestPlantedStatusFilter::test_latest_pending_record_supersedes_valid_and_failed
+FAILED ../tests/test_state.py::TestPlantedTimestampOrder::test_later_instant_with_smaller_string_wins
+FAILED ../tests/test_state.py::TestPlantedTimestampOrder::test_earlier_instant_with_larger_string_loses
+FAILED ../tests/test_state.py::TestPlantedTimestampOrder::test_offsets_across_a_date_boundary
+FAILED ../tests/test_state.py::TestPlantedTimestampOrder::test_z_suffix_compared_with_numeric_offset
+FAILED ../tests/test_state.py::TestPlantedTimestampOrder::test_same_instant_different_offsets_keeps_first
+FAILED ../tests/test_state.py::TestPlantedTimestampOrder::test_mixed_dataset
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_identical_timestamps_keep_first_record[VALID-FAILED-expected0]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_identical_timestamps_keep_first_record[FAILED-VALID-expected1]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_round_half_up_to_cents[amounts0-0.13]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_round_half_up_to_cents[amounts1-2.68]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_round_half_up_to_cents[amounts2-2.01]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_round_half_up_to_cents[amounts3-0.30]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_round_half_up_to_cents[amounts4--1.13]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_round_half_up_to_cents[amounts5-10.00]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_large_totals_keep_decimal_precision[amounts0-98765432109876543.22]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_large_totals_keep_decimal_precision[amounts1-12345678901234567890.13]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_negative_zero_is_normalised[amounts0]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_negative_zero_is_normalised[amounts1]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_negative_zero_is_normalised[amounts2]
+FAILED ../tests/test_state.py::TestRobustnessTiesAndRounding::test_header_only_file
+FAILED ../tests/test_state.py::TestRobustnessAcceptedInput::test_utf8_bom_before_header
+FAILED ../tests/test_state.py::TestRobustnessAcceptedInput::test_valid_and_failed_status_normalisation
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_invalid_or_offsetless_timestamp[2024-07-01T12:00:00]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_invalid_or_offsetless_timestamp[2024-07-01]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_invalid_or_offsetless_timestamp[not-a-date]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_invalid_or_offsetless_timestamp[]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_offsetless_timestamp_on_non_valid_row
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_offsetless_timestamp_on_superseded_row
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_unknown_or_empty_status[CANCELLED]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_unknown_or_empty_status[refunded]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_unknown_or_empty_status[]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_unknown_or_empty_status[   ]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_unknown_status_on_superseded_row
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_short_or_overlong_row[x1,2024-07-01T12:00:00+00:00]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_short_or_overlong_row[x1,2024-07-01T12:00:00+00:00,1.00]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_short_or_overlong_row[x1]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_short_or_overlong_row[x1,2024-07-01T12:00:00+00:00,1.00,VALID,extra]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_invalid_amount[abc]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_invalid_amount[]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_invalid_amount[NaN]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_invalid_amount[Infinity]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_invalid_amount[-inf]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_empty_transaction_id[]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_empty_transaction_id[   ]
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_missing_required_column
+FAILED ../tests/test_state.py::TestRobustnessRejectedInput::test_missing_input_file
+============================== 53 failed in 0.84s ==============================

@@ -1,0 +1,143 @@
+{
+  "seed": 7733511498819747133,
+  "weights": {
+    "C1": "0.20",
+    "C2": "0.30",
+    "C3": "0.50"
+  },
+  "checks": {
+    "C1": {
+      "passed": true,
+      "weight": "0.20",
+      "cases": [
+        {
+          "case": "plain 3 rows",
+          "rows": 3,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "plain 5 rows",
+          "rows": 5,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "plain 8 rows",
+          "rows": 8,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "plain 12 rows",
+          "rows": 12,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "plain 40 rows",
+          "rows": 40,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "row-order invariance (rows of case 2 shuffled)",
+          "rows": 5,
+          "passed": true,
+          "reason": null
+        }
+      ]
+    },
+    "C2": {
+      "passed": true,
+      "weight": "0.30",
+      "cases": [
+        {
+          "case": "mixed statuses 4 rows",
+          "rows": 4,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "mixed statuses 6 rows",
+          "rows": 6,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "mixed statuses 9 rows",
+          "rows": 9,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "mixed statuses 15 rows",
+          "rows": 15,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "mixed statuses 30 rows",
+          "rows": 30,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "adding a new PENDING transaction changes nothing",
+          "rows": 5,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "row-order invariance (rows of case 3 shuffled)",
+          "rows": 9,
+          "passed": true,
+          "reason": null
+        }
+      ]
+    },
+    "C3": {
+      "passed": true,
+      "weight": "0.50",
+      "cases": [
+        {
+          "case": "3 tx groups: disagree,tie_hi,tie_lo",
+          "rows": 6,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "6 tx groups: disagree,disagree,disagree,tie_hi,tie_lo,single",
+          "rows": 11,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "3 tx groups: disagree,tie_hi,tie_lo",
+          "rows": 6,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "6 tx groups: disagree,disagree,tie_hi,single,single,single",
+          "rows": 9,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "7 tx groups: disagree,disagree,disagree,tie_hi,tie_lo,single,single",
+          "rows": 12,
+          "passed": true,
+          "reason": null
+        },
+        {
+          "case": "5 tx groups: disagree,disagree,disagree,tie_hi,tie_lo",
+          "rows": 10,
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  "score": "1.00"
+}

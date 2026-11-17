@@ -1,0 +1,124 @@
+{
+    "schema_version": 1,
+    "id": "c3a85700-4ace-4406-90c8-36a13969d819",
+    "task_name": "harbor/reconcile-bug",
+    "trial_name": "reconcile-bug__chUnj2H",
+    "trial_uri": "file:///mnt/w/Projects/harbor-rl-canary-nirmit7/jobs/2026-11-17__15-13-44/reconcile-bug__chUnj2H",
+    "task_id": {
+        "path": "tasks/reconcile-bug"
+    },
+    "source": null,
+    "task_checksum": "b1d2b1c5ef93fba494388313a513eda33f1afd0a6fe0ae060e0645b052aacd19",
+    "config": {
+        "schema_version": 1,
+        "task": {
+            "path": "tasks/reconcile-bug",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "reconcile-bug__chUnj2H",
+        "trials_dir": "jobs/2026-11-17__15-13-44",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "oracle",
+            "import_path": null,
+            "model_name": null,
+            "base_url": null,
+            "model_api_key_name": null,
+            "model_api_format": null,
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "stream": false,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "override_error_policy": {},
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "267955c5-83e2-4c05-836c-c643dba8fc94",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "oracle",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "model_usage": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.5
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-11-17T15:13:45.476053Z",
+    "finished_at": "2026-11-17T15:13:56.183145Z",
+    "environment_setup": {
+        "started_at": "2026-11-17T15:13:45.933033Z",
+        "finished_at": "2026-11-17T15:13:50.949708Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-11-17T15:13:50.949758Z",
+        "finished_at": "2026-11-17T15:13:50.949807Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-11-17T15:13:50.949876Z",
+        "finished_at": "2026-11-17T15:13:51.323453Z"
+    },
+    "verifier": {
+        "started_at": "2026-11-17T15:13:51.634563Z",
+        "finished_at": "2026-11-17T15:13:52.651830Z"
+    },
+    "step_results": null,
+    "reward_valid": true
+}

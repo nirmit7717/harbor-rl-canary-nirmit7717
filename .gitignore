@@ -1,0 +1,14 @@
+.env
+.venv/
+
+# Local working files, not part of the submission
+jobs/
+scratch/
+audit/
+harbor-examples/
+experiments/
+ENGINEERING_LOG.md
+*.docx
+~$*
+__pycache__/
+*.pyc

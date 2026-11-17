@@ -1,0 +1,20 @@
+[C1] PASS plain 3 rows
+[C1] PASS plain 5 rows
+[C1] PASS plain 8 rows
+[C1] PASS plain 12 rows
+[C1] PASS plain 40 rows
+[C1] PASS row-order invariance (rows of case 2 shuffled)
+[C2] PASS mixed statuses 4 rows
+[C2] PASS mixed statuses 6 rows
+[C2] PASS mixed statuses 9 rows
+[C2] PASS mixed statuses 15 rows
+[C2] PASS mixed statuses 30 rows
+[C2] PASS adding a new PENDING transaction changes nothing
+[C2] PASS row-order invariance (rows of case 3 shuffled)
+[C3] PASS 6 tx groups: disagree,disagree,tie_hi,tie_lo,single,single
+[C3] PASS 5 tx groups: disagree,disagree,disagree,tie_hi,tie_lo
+[C3] PASS 6 tx groups: disagree,disagree,tie_hi,tie_lo,single,single
+[C3] PASS 6 tx groups: disagree,disagree,disagree,tie_hi,tie_lo,single
+[C3] PASS 5 tx groups: disagree,disagree,disagree,tie_hi,single
+[C3] PASS 7 tx groups: disagree,disagree,tie_hi,tie_lo,single,single,single
+dense reward: 1.00

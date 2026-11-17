@@ -1,0 +1,283 @@
+[?2004hroot@df015a844178:/app# asciinema rec --stdin /logs/agent/recording.cast
+[?2004l[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
+[0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
+[?2004hroot@df015a844178:/app# clear
+[?2004l[H[J[3J[?2004hroot@df015a844178:/app# ls -la
+[?2004ltotal 12
+drwxr-xr-x 1 root root 4096 Nov 17 13:10 .
+drwxr-xr-x 1 root root 4096 Nov 17 14:13 ..
+-rwxrwxrwx 1 root root 3274 Nov 17 13:10 reconcile.py
+[?2004hroot@df015a844178:/app# cat reconcile.py
+[?2004l#!/usr/bin/env python3
+"""Summarise a transaction CSV (tx_id,timestamp,amount,status) as JSON."""
+
+import csv
+import sys
+from datetime import datetime
+from decimal import MAX_PREC, ROUND_HALF_UP, Decimal, DecimalException, localcontext
+from pathlib import Path
+
+REQUIRED_COLUMNS = ("tx_id", "timestamp", "amount", "status")
+KNOWN_STATUSES = {"VALID", "FAILED", "PENDING"}
+
+
+def parse_timestamp(value):
+    parsed = datetime.fromisoformat(value)
+    if parsed.tzinfo is None:
+        raise ValueError(f"Timestamp must include a UTC offset: {value!r}")
+    return parsed
+
+
+def parse_amount(value):
+    try:
+        amount = Decimal(value)
+    except DecimalException:
+        raise ValueError(f"Invalid amount: {value!r}") from None
+    if not amount.is_finite():
+        raise ValueError(f"Amount must be finite: {value!r}")
+    return amount
+
+
+def reconcile(csv_path):
+    latest = {}
+    with open(csv_path, newline="", encoding="utf-8-sig") as handle:
+        reader = csv.DictReader(handle)
+        if not set(REQUIRED_COLUMNS).issubset(reader.fieldnames or []):
+            raise ValueError("CSV is missing required columns")
+
+        for row in reader:
+            if None in row or None in row.values():
+                raise ValueError(f"Malformed row on line {reader.line_num}")
+            tx_id = row["tx_id"].strip()
+            timestamp = row["timestamp"].strip()
+            parse_timestamp(timestamp)
+            amount = parse_amount(row["amount"].strip())
+            status = row["status"].strip().upper()
+
+            if not tx_id:
+                raise ValueError(f"Empty transaction ID on line {reader.line_num}")
+            if status not in KNOWN_STATUSES:
+                raise ValueError(f"Unknown status on line {reader.line_num}: {status!r}")
+
+            # Keep the most recent record for each transaction ID.
+            previous = latest.get(tx_id)
+            if previous is None or timestamp > previous["timestamp"]:
+                latest[tx_id] = {"timestamp": timestamp, "amount": amount, "status": status}
+
+    valid = [tx for tx in latest.values() if tx["status"] in ("VALID", "PENDING")]
+    failed = [tx for tx in latest.values() if tx["status"] == "FAILED"]
+    with localcontext(prec=MAX_PREC):
+        total = sum((tx["amount"] for tx in valid), Decimal(0))
+        total = total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    if total.is_zero():
+        total = total.copy_abs()  # never report negative zero
+    return total, len(valid), len(failed)
+
+
+def main():
+    if len(sys.argv) != 3:
+        print("Usage: python reconcile.py <input.csv>", file=sys.stderr)
+        sys.exit(1)
+    csv_path = Path(sys.argv[1])
+    if not csv_path.is_file():
+        print(f"Error: File not found: {csv_path}", file=sys.stderr)
+        sys.exit(1)
+    try:
+        total, valid_count, failed_count = reconcile(csv_path)
+    except (ValueError, DecimalException, OSError, csv.Error) as error:
+        print(f"Error processing CSV: {error}", file=sys.stderr)
+        sys.exit(1)
+    # JSON is written by hand so the Decimal total never passes through float.
+    print(f'{{\n  "total_valid_amount": {total:f},\n  "valid_count": {valid_count},'
+          f'\n  "failed_count": {failed_count}\n}}')
+
+
+if __name__ == "__main__":
+    main()
+[?2004hroot@df015a844178:/app# python3 -m unittest discover
+[?2004l
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+NO TESTS RAN
+[?2004hroot@df015a844178:/app# python3 --version
+[?2004lPython 3.12.16
+[?2004hroot@df015a844178:/app# python3 -c '
+[?2004l[?2004h> with open("test_reconcile.py", "w") as f:
+[?2004l[?2004h>     f.write("""\
+[?2004l[?2004h> import unittest
+[?2004l[?2004h> import subprocess
+[?2004l[?2004h> import tempfile
+[?2004l[?2004h> import json
+[?2004l[?2004h> from pathlib import Path
+[?2004l[?2004h> 
+[?2004l[?2004h> class TestReconcile(unittest.TestCase):
+[?2004l[?2004h>     def run_script(self, csv_content):
+[?2004l[?2004h>         with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".csv", encoding="utf-8") as tf:
+[?2004l[?2004h>             tf.write(csv_content)
+[?2004l[?2004h>             fname = tf.name
+[?2004l[?2004h>         try:
+[?2004l[?2004h>             res = subprocess.run(["python3", "reconcile.py", fname], capture_output=True, text=True)
+[?2004l[?2004h>             return res.returncode, res.stdout, res.stderr
+[?2004l[?2004h>         finally:
+[?2004l[?2004h>             Path(fname).unlink()
+[?2004l[?2004h> 
+[?2004l[?2004h>     def test_basic(self):
+[?2004l[?2004h>         csv = \"tx_id,timestamp,amount,status\\n1,2023-01-01T10:00:00Z,100.50,VALID\\n\"
+[?2004l[?2004h>         code, out, err = self.run_script(csv)
+[?2004l[?2004h>         self.assertEqual(code, 0)
+[?2004l[?2004h>         data = json.loads(out)
+[?2004l[?2004h>         self.assertEqual(data[\"total_valid_amount\"], 100.50)
+[?2004l[?2004h>         self.assertEqual(data[\"valid_count\"], 1)
+[?2004l[?2004h>         self.assertEqual(data[\"failed_count\"], 0)
+[?2004l[?2004h> 
+[?2004l[?2004h> if __name__ == "__main__":
+[?2004l[?2004h>     unittest.main()
+[?2004l[?2004h> """)
+[?2004l[?2004h> '
+[?2004l[?2004hroot@df015a844178:/app# python3 test_reconcile.py
+[?2004lF
+======================================================================
+FAIL: test_basic (__main__.TestReconcile.test_basic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/app/test_reconcile.py", line 21, in test_basic
+    self.assertEqual(code, 0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 1 test in 0.027s
+
+FAILED (failures=1)
+[?2004hroot@df015a844178:/app# python3 -c '
+[?2004l[?2004h> with open("reconcile.py", "w") as f:
+[?2004l[?2004h>     f.write("""\
+[?2004l[?2004h> #!/usr/bin/env python3
+[?2004l[?2004h> """Summarise a transaction CSV (tx_id,timestamp,amount,status) as JSON."""
+[?2004l[?2004h> 
+[?2004l[?2004h> import csv
+[?2004l[?2004h> import sys
+[?2004l[?2004h> from datetime import datetime
+[?2004l[?2004h> from decimal import ROUND_HALF_UP, Decimal, DecimalException, localcontext
+[?2004l[?2004h> from pathlib import Path
+[?2004l[?2004h> 
+[?2004l[?2004h> REQUIRED_COLUMNS = ("tx_id", "timestamp", "amount", "status")
+[?2004l[?2004h> KNOWN_STATUSES = {"VALID", "FAILED", "PENDING"}
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def parse_timestamp(value):
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         parsed = datetime.fromisoformat(value)
+[?2004l[?2004h>     except (ValueError, TypeError):
+[?2004l[?2004h>         raise ValueError(f"Invalid ISO 8601 timestamp: {value!r}") from None
+[?2004l[?2004h>     if parsed.tzinfo is None:
+[?2004l[?2004h>         raise ValueError(f"Timestamp must include a UTC offset: {value!r}")
+[?2004l[?2004h>     return parsed
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def parse_amount(value):
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         amount = Decimal(value)
+[?2004l[?2004h>     except DecimalException:
+[?2004l[?2004h>         raise ValueError(f"Invalid amount: {value!r}") from None
+[?2004l[?2004h>     if not amount.is_finite():
+[?2004l[?2004h>         raise ValueError(f"Amount must be finite: {value!r}")
+[?2004l[?2004h>     return amount
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def reconcile(csv_path):
+[?2004l[?2004h>     latest = {}
+[?2004l[?2004h>     with open(csv_path, newline="", encoding="utf-8-sig") as handle:
+[?2004l[?2004h>         reader = csv.reader(handle)
+[?2004l[?2004h>         try:
+[?2004l[?2004h>             header = next(reader)
+[?2004l[?2004h>         except StopIteration:
+[?2004l[?2004h>             raise ValueError("CSV file is empty")
+[?2004l[?2004h> 
+[?2004l[?2004h>         # Strip header columns
+[?2004l[?2004h>         header = [h.strip() for h in header]
+[?2004l[?2004h>         if tuple(header) != REQUIRED_COLUMNS:
+[?2004l[?2004h>             raise ValueError(f"Invalid header columns: {header!r}")
+[?2004l[?2004h> 
+[?2004l[?2004h>         for line_num, row in enumerate(reader, start=2):
+[?2004l[?2004h>             if len(row) != len(REQUIRED_COLUMNS):
+[?2004l[?2004h>                 raise ValueError(f"Row on line {line_num} does not have exactly {len(REQUIRED_COLUMNS)} fields")
+[?2004l[?2004h>             
+[?2004l[?2004h>             tx_id_raw, timestamp_raw, amount_raw, status_raw = row
+[?2004l[?2004h>             
+[?2004l[?2004h>             tx_id = tx_id_raw.strip()
+[?2004l[?2004h>             if not tx_id:
+[?2004l[?2004h>                 raise ValueError(f"Empty transaction ID on line {line_num}")
+[?2004l[?2004h> 
+[?2004l[?2004h>             timestamp_dt = parse_timestamp(timestamp_raw.strip())
+[?2004l[?2004h>             amount = parse_amount(amount_raw.strip())
+[?2004l[?2004h>             status = status_raw.strip().upper()
+[?2004l[?2004h> 
+[?2004l[?2004h>             if status not in KNOWN_STATUSES:
+[?2004l[?2004h>                 raise ValueError(f"Unknown status on line {line_num}: {status_raw!r}")
+[?2004l[?2004h> 
+[?2004l[?2004h>             previous = latest.get(tx_id)
+[?2004l[?2004h>             if previous is None or timestamp_dt > previous["timestamp_dt"]:
+[?2004l[?2004h>                 latest[tx_id] = {
+[?2004l[?2004h>                     "timestamp_dt": timestamp_dt,
+[?2004l[?2004h>                     "amount": amount,
+[?2004l[?2004h>                     "status": status
+[?2004l[?2004h>                 }
+[?2004l[?2004h> 
+[?2004l[?2004h>     valid_txs = [tx for tx in latest.values() if tx["status"] == "VALID"]
+[?2004l[?2004h>     failed_txs = [tx for tx in latest.values() if tx["status"] == "FAILED"]
+[?2004l[?2004h> 
+[?2004l[?2004h>     with localcontext():
+[?2004l[?2004h>         total = sum((tx["amount"], for tx in valid_txs), Decimal(0))
+[?2004l[?2004h>         total = total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+[?2004l[?2004h> 
+[?2004l[?2004h>     if total.is_zero():
+[?2004l[?2004h>         total = total.copy_abs()
+[?2004l[?2004h> 
+[?2004l[?2004h>     return total, len(valid_txs), len(failed_txs)
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> def main():
+[?2004l[?2004h>     if len(sys.argv) != 2:
+[?2004l[?2004h>         print("Usage: python reconcile.py <input.csv>", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     csv_path = Path(sys.argv[1])
+[?2004l[?2004h>     if not csv_path.is_file():
+[?2004l[?2004h>         print(f"Error: File not found: {csv_path}", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h>     try:
+[?2004l[?2004h>         total, valid_count, failed_count = reconcile(csv_path)
+[?2004l[?2004h>     except (ValueError, DecimalException, OSError, csv.Error) as error:
+[?2004l[?2004h>         print(f"Error processing CSV: {error}", file=sys.stderr)
+[?2004l[?2004h>         sys.exit(1)
+[?2004l[?2004h> 
+[?2004l[?2004h>     print(f\"{\n  \"total_valid_amount\": {total:f},\n  \"valid_count\": {valid_count},\n  \"failed_count\": {failed_count}\n}\")
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> if __name__ == "__main__":
+[?2004l[?2004h>     main()
+[?2004l[?2004h> """)
+[?2004l[?2004h> '
+[?2004l  File "<string>", line 3
+    f.write("""\
+            ^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+[?2004hroot@df015a844178:/app# python3 test_reconcile.py
+[?2004lF
+======================================================================
+FAIL: test_basic (__main__.TestReconcile.test_basic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/app/test_reconcile.py", line 21, in test_basic
+    self.assertEqual(code, 0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 1 test in 0.017s
+
+FAILED (failures=1)
+[?2004hroot@df015a844178:/app# python3 -c 'import base64; code = base64.b64decode("IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwojIiJTdW1tYXJpc2UgYSB0cmFuc2FjdGlvbiBDU1YgKHR4X2lkLHRpbWVzdGFtcGFtb3VudCxzdGF0dXMpIGFzIEpTT04uIiIiCgppbXBvcnQgY3N2CmltcG9ydCBzeXMKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUKZnJvbSBkZWNpbWFsIGltcG9ydCBST1VORF9IQUxGX1VQLCBEZWNpbWFsLCBEZWNpbWFsRXhjZXB0aW9uLCBsb2NhbGNvbnRleHQKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCgpSRVFVSVJFRF9DT0xVTU5TID0gKCJ0eF9pZCIsICJ0aW1lc3RhbXAiLCAiYW1vdW50IiwgInN0YXR1cyIpCktOT1dOX1NUQVRVU0VTIyA9IHsiVkFMSUQiLCAiRkFJTEVEIiwgIlBFTkRJTkcifQoKZGVmIHBhcnNlX3RpbWVzdGFtcCh2YWx1ZSk6CiAgICB0cnk6CiAgICAgICAgcGFyc2VkID0gZGF0ZXRpbWUuZnJvbWlzb2Zvcm1hdCh2YWx1ZSkKICAgIGV4Y2VwdCAoVmFsdWVFcnJvciwgVHlwZUVycm9yKToKICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiSW52YWxpZCBJU08gODYwMSB0aW1lc3RhbXA6IHZhbHVlITJyIikgZnJvbSBOb25lCiAgICBpZiBwYXJzZWQudHppbmZvIGlzIE5vbmU6CiAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiVGltZXN0YW1wIG11c3QgaW5jbHVkZSBhIFVUQyBvZmZzZXQ6IHZhbHVlITJyIikKICAgIHJldHVybiBwYXJzZWQKCgpkZWYgcGFyc2VfYW1vdW50KHZhbHVlKToKICAgIHRyeToKICAgICAgICBhbW91bnQgPSBEZWNpbWFsKHZhbHVlKQogICAgZXhjZXB0IERlY2ltYWxFeGNlcHRpb246CiAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIkludmFsaWQgYW1vdW50OiB2YWx1ZSEyciIpIGZyb20gTm9uZgogICAgaWYgbm90IGFtb3VudC5pc19maW5pdGUoKToKICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiQW1vdW50IG11c3QgYmUgZmluaXRlOiB2YWx1ZSEyciIpCiAgICByZXR1cm4gYW1vdW50CgoKZGVmIHJlY29uY2lsZShjc3JfcGF0aCk6CiAgICBsYXRlc3QgPSB7fQogICAgd2l0aCBvcGVuKGNzcl9wYXRoLCBuZXdsaW5lPSIiLCBlbmNvZGluZz0idXRmLTgtc2lnIikgYXMgaGFuZGxlOgogICAgICAgIHJlYWRlciA9IGNzdi5yZWFkZXIoaGFuZGxlKQogICAgICAgIHRyeToKICAgICAgICAgICAgaGVhZGVyID0gbmV4dChyZWFkZXIpCiAgICAgICAgZXhjZXB0IFN0b3BJdGVyYXRpb246CiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoIkNTViBmaWxlIGlzIGVtcHR5IikKICAgICAgICAKICAgICAgICBoZWFkZXIgPSBbLWguc3RyaXAoKSBmb3IgaCBpbiBoZWFkZXJdCiAgICAgICAgaWYgdHVwbGUoaGVhZGVyKSAhPSBSRVFVSVJFRF9DT0xVTU5TOgogICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiSW52YWxpZCBoZWFkZXIgY29sdW1uczogaGVhZGVyITJyIikKICAgICAgICAKICAgICAgICBmb3IgbGluZV9udW0sIHJvdyBpbiBlbnVtZXJhdGUocmVhZGVyLCBzdGFydD0yKToKICAgICAgICAgICAgaWYgbGVuKHJvdykgIT0gbGVuKFJFUVVJUkVEX0NPTFVNTlMpOgogICAgICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIlJvdyBvbiBsaW5lIHtsaW5lX251bX0gZG9lcyBub3QgaGF2ZSBleGFjdGx5IHtsZW4oUkVRVUlSRURfQ09MVU1OUyl9IGZpZWxkcyIpCiAgICAgICAgICAgIAogICAgICAgICAgICB0eF9pZF9yYXcsIHRpbWVzdGFtcF9yYXcsIGFtb3VudF9yYXcsIHN0YXR1c19yYXcgPSByb3cKICAgICAgICAgICAgCiAgICAgICAgICAgIHR4X2lkID0gdHhfaWRfcmF3LnN0cmlwKCkKICAgICAgICAgICAgaWYgbm90IHR4X2lkOgogICAgICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIkVtcHR5IHRyYW5zYWN0aW9u IDogaWQgb24gbGluZSB7bGluZV9udW19IikKICAgICAgICAgICAgCiAgICAgICAgICAgIHRpbWVzdGFtcF9kdCA9IHBhcnNlX3RpbWVzdGFtcCh0aW1lc3RhbXBfcmF3LnN0cmlwKCkpCiAgICAgICAgICAgIGFtb3VudCA9IHBhcnNlX2Ftb3VudChhbW91bnRfcmF3LnN0cmlwKCkpCiAgICAgICAgICAgIHN0YXR1cyA9IHN0YXR1c19yYXcuc3RyaXAoKS51cHBlcigpCiAgICAgICAgICAgIAogICAgICAgICAgICBpZiBzdGF0dXMgbm90IGluIEtub3duX3N0YXR1c2VzOgogICAgICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIlVua25vd24gc3RhdHVzIG9uIGxpbmUge2xpbmVfbnVtfTogc3RhdHVzX3JhdCEyciIpCiAgICAgICAgICAgIAogICAgICAgICAgICBwcmV2aW91cyA9IGxhdGVzdC5nZXQodHhfaWQpCiAgICAgICAgICAgIGlmIHByZXZpb3VzIGlzIE5vbmUgb3IgdGltZXN0YW1wX2R0ID4gcHJldmlvdXNbInRpbWVzdGFtcF9kdCJdOgogICAgICAgICAgICAgICAgbGF0ZXN0W3R4X2lkXSA9IHsKICAgICAgICAgICAgICAgICAgICAidGltZXN0YW1wX2R0IjogdGltZXN0YW1wX2R0LAogICAgICAgICAgICAgICAgICAgICJhbW91bnQiOiBhbW91bnQsCiAgICAgICAgICAgICAgICAgICAgInN0YXR1cyI6IHN0YXR1cwogICAgICAgICAgICAgICAgfQoKICAgIHZhbGlkX3R4cyA9IFt0eSBmb3IgdHggaW4gbGF0ZXN0LnZhbHVlcygpIGlmIHR4WyJzdGF0dXMiXSA9PSAiVkFMSUQiXQogICAgZmFpbGVkX3R4cyA9IFt0eSBmb3IgdHggaW4gbGF0ZXN0LnZhbHVlcygpIGlmIHR4WyJzdGF0dXMiID09ICJGQUlMRUQiXQoKICAgIHdpdGggbG9jYWxjb250ZXh0KCk6CiAgICAgICAgdG90YWwgPSBzdW0oKHR4WyJhbW91bnQiXSBmb3IgdHggaW4gdmFsaWRfdHhzKSwgRGVjaW1hbCgwKSkKICAgICAgICB0b3RhbCA9IHRvdGFsLnF1YW50aXplKERlY2ltYWwoIjAuMDEiKSwgcm91bmRjbmc9Uk9VTkRfSEFMRl9VUCkKICAgIAogICAgaWYgdG90YWwuaXNfemVybyAoKToKICAgICAgICB0b3RhbCA9IHRvdGFsLmNvcHlfYWJzKCkKICAgIAogICAgcmV0dXJuIHRvdGFsLCBsZW4odmFsaWRfdHhzKSwgbGVuKGZhaWxlZF90eHMpCgoKZGVmIG1haW4oKToKICAgIGlmIGxlbihzeXMuYXJndikgIT0gMjoKICAgICAgICBwcmludCAoIlVzYWdlOiBweXRob24gcmVjb25jaWxlLnB5IDxpbnB1dC5jc3Y+IiwgZmlsZT1zeXMuZXJyZXIpCiAgICAgICAgc3lzLmV4aXQoMSkKICAgIGNzcl9wYXRoID0gUGF0aChzeXMuYXJndlsxXSkKICAgIGlmIG5vdCBjc3JfcGF0aC5pc19maWxlKCk6CiAgICAgICAgcHJpbnQgKGYiRXJyb3I6IEZpbGUgbm90IGZvdW5kOiB7Y3NyX3BhdGh9IiwgZmlsZT1zeXMuZXJyZXIpCiAgICAgICAgc3lzLmV4aXQoMSkKICAgIHRyeToKICAgICAgICB0b3RhbCwgdmFsaWRfY291bnQsIGZhaWxlZF9jb3VudCA9IHJlY29uY2lsZShjc3JfcGF0aCkKICAgIGV4Y2VwdCAoVmFsdWVFcnJvciwgRGVjaW1hbEV4Y2VwdGlvbiwgT1NFcnJvciwgY3N2LkVycm9yKSBhcyBlcnJvcjoKICAgICAgICBwcmludCAoZiJFcnJvciBwcm9jZXNzaW5nIENTVjoge2Vycm9yfSIsIGZpbGU9c3lzLmVycm9yKQogICAgICAgIHN5cy5leGl0KDEpCgogICAgcHJpbnQoZiJ7XG4gIFwidG90YWxfdmFsaWRfYW1vdW50XCI6IHt0b3RhbDpmfSwKICBcInZhbGlkX2NvdW50XCI6IHt2YWxpZF9jb3VudH0sCiAgXCJmYWlsZWRfY291bnRcIjoge2ZhaWxlZF9jb3VudH1cbn0iKQoKaWYgX19uYW1lXyA9PSAiX19tYWluX18iOgogICAgbWFpbigpCg=="); open("reconcile.py", "w").write(code)'
+[?2004lTraceback (most recent call last):
+  File "<string>", line 1, in <module>
+TypeError: write() argument must be str, not bytes
+[?2004hroot@df015a844178:/app# 

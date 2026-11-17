@@ -1,0 +1,20 @@
+[C1] FAIL plain 3 rows -- total_valid_amount 0.00 != 26679.21
+[C1] FAIL plain 5 rows -- total_valid_amount 0.00 != 30088.98
+[C1] FAIL plain 8 rows -- total_valid_amount 0.00 != 53189.59
+[C1] FAIL plain 12 rows -- total_valid_amount 0.00 != 124125.24
+[C1] FAIL plain 40 rows -- total_valid_amount 0.00 != 253415.41
+[C1] FAIL row-order invariance (rows of case 2 shuffled) -- total_valid_amount 0.00 != 30088.98
+[C2] FAIL mixed statuses 4 rows -- total_valid_amount 0.00 != 11082.94
+[C2] FAIL mixed statuses 6 rows -- total_valid_amount 0.00 != 45534.24
+[C2] FAIL mixed statuses 9 rows -- total_valid_amount 0.00 != 54986.40
+[C2] FAIL mixed statuses 15 rows -- total_valid_amount 0.00 != 116698.27
+[C2] FAIL mixed statuses 30 rows -- total_valid_amount 0.00 != 72976.41
+[C2] FAIL adding a new PENDING transaction changes nothing -- total_valid_amount 0.00 != 11082.94
+[C2] FAIL row-order invariance (rows of case 3 shuffled) -- total_valid_amount 0.00 != 54986.40
+[C3] FAIL 4 tx groups: disagree,tie_hi,tie_lo,single -- total_valid_amount 0.00 != 44118.33
+[C3] FAIL 5 tx groups: disagree,tie_hi,tie_lo,single,single -- total_valid_amount 0.00 != 20877.93
+[C3] FAIL 6 tx groups: disagree,disagree,tie_hi,tie_lo,single,single -- total_valid_amount 0.00 != 74485.61
+[C3] FAIL 3 tx groups: disagree,tie_hi,tie_lo -- total_valid_amount 0.00 != 39355.22
+[C3] FAIL 4 tx groups: disagree,tie_hi,tie_lo,single -- total_valid_amount 0.00 != 25614.21
+[C3] FAIL 8 tx groups: disagree,disagree,disagree,tie_hi,tie_lo,single,single,single -- total_valid_amount 0.00 != 70591.41
+dense reward: 0.00
